@@ -3,56 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Escolha seu destino - Luz ou Trevas">
-  <title>Portal de Escolha</title>
-  <link rel="stylesheet" href="index.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <meta name="description" content="Escolha seu destino - Herói ou Vilão">
+  <title>Portal da Escolha</title>
+  <link rel="preload" href="index.css" as="style">
+  <link rel="preload" href="index.js" as="script">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
+  <!-- Tela de carregamento -->
   <div class="loading-screen">
-    <div class="loader"></div>
+    <div class="loader">
+      <div class="loader-inner"></div>
+    </div>
     <p class="loading-text">Carregando o destino...</p>
-    <div class="progress-bar">
-      <div class="progress"></div>
+    <div class="progress-container">
+      <div class="progress-bar"></div>
     </div>
   </div>
 
-  <div class="particles-js" id="particles-js"></div>
+  <!-- Efeito de fundo -->
+  <div class="portal-background">
+    <div class="energy-wave hero-wave"></div>
+    <div class="energy-wave villain-wave"></div>
+    <div class="nexus-point"></div>
+  </div>
 
+  <!-- Conteúdo principal -->
   <main class="portal-container">
     <div class="portal-header">
       <h1 class="portal-title">ESCOLHA SEU DESTINO</h1>
       <p class="portal-subtitle">O equilíbrio do universo depende de sua escolha</p>
     </div>
 
-    <div class="choice-container">
+    <div class="choice-grid">
+      <!-- Card Herói -->
       <div class="choice-card hero-choice">
-        <div class="choice-overlay"></div>
-        <div class="choice-content">
+        <div class="character-image hero-image"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-icon">
+            <i class="fas fa-sun"></i>
+          </div>
           <h2>GUARDIÃO CELESTIAL</h2>
-          <p>O protetor da luz, defensor dos inocentes e guardião do equilíbrio cósmico.</p>
-          <a href="heroi-vilao/heroi.html" class="choice-btn">Escolher a Luz <i class="fas fa-sun"></i></a>
+          <p>Defensor da luz e guardião do equilíbrio cósmico.</p>
+          <a href="heroi-vilao/heroi.html" class="choice-btn">
+            <span>Escolher a Luz</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
+        <div class="card-glows"></div>
       </div>
 
+      <!-- Card Vilão -->
       <div class="choice-card villain-choice">
-        <div class="choice-overlay"></div>
-        <div class="choice-content">
+        <div class="character-image villain-image"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-icon">
+            <i class="fas fa-moon"></i>
+          </div>
           <h2>SOMBRA IMPLACÁVEL</h2>
-          <p>A encarnação das trevas, que busca libertar o poder primordial do caos.</p>
-          <a href="heroi-vilao/vilao.html" class="choice-btn">Abraçar as Trevas <i class="fas fa-moon"></i></a>
+          <p>Liberte o poder primordial do caos.</p>
+          <a href="heroi-vilao/vilao.html" class="choice-btn">
+            <span>Abraçar as Trevas</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
+        <div class="card-glows"></div>
       </div>
     </div>
 
     <div class="portal-footer">
-      <p>Atenção: Sua escolha terá consequências eternas</p>
+      <p>Esta decisão moldará seu destino para sempre</p>
     </div>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="index.js"></script>
+  <script src="index.js" defer></script>
 </body>
 </html>
