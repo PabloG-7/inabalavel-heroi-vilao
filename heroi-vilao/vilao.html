@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NOXAR - A escuridão que consome tudo">
+  <title>NOXAR</title>
+  <link rel="stylesheet" href="vilao.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+  <div class="loading-screen">
+    <div class="loader"></div>
+    <p class="loading-text">Carregando a escuridão...</p>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+  </div>
+
+  <div class="particles-js" id="particles-js"></div>
+
+  <header class="hero" id="trailer">
+    <div class="video-container">
+      <video class="trailer" controls poster="thumb-noxar.jpg" preload="auto">
+        <source src="video/trailer-noxar.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo HTML5.
+      </video>
+      <div class="play-button" id="playButton">
+        <div class="pulse-ring"></div>
+      </div>
+    </div>
+    <div class="scroll-down">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </header>
+  
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="#" class="logo">NOXAR</a>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#about">A Ascensão</a></li>
+        <li><a href="#character">O Inimigo</a></li>
+        <li><a href="#gallery">O Terror</a></li>
+        <li><a href="#trailer">Trailer</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="title-section">
+    <div class="blood-drips"></div>
+    <h1 class="title-bloody animate__animated animate__fadeIn">NOXAR</h1>
+  </section>
+
+  <section id="about" class="intro">
+    <div class="section-header">
+      <h2>A Ascensão das Trevas</h2>
+      <div class="section-divider"></div>
+    </div>
+    <p class="animate__animated animate__fadeInUp">
+      Forjado nas profundezas do abismo e alimentado pela dor, ele não é apenas um vilão - é a encarnação do caos, o fim inevitável, a verdade que ninguém ousa encarar. Ele é... Noxar.
+<br><br>
+Enquanto 100 cidades eram reduzidas a cinzas e sete reinos caíam em desespero, os deuses se esconderam. Mas uma presença emergiu das sombras, sem piedade, sem remorso - um aviso do que acontece quando a luz se apaga.
+<br><br>
+Chamam-no de monstro. De lenda. Mas ele não é mito. É a consequência de um único princípio: 1 Verdade.
+    </p>
+    <p class="highlight-text animate__animated animate__fadeInUp">
+      Quando as nações desmoronaram e os heróis falharam,  
+      ele se levantou. Não para salvar, mas para punir.  
+      Caminhou entre os fracos como o juiz que o mundo não merecia, mas precisava.
+    </p>
+    <p class="animate__animated animate__fadeInUp">
+      Chamam de destruidor. De maldição. Mas ele é mais que isso. Ele é o fim.
+    </p>
+    <div class="world-stats">
+      <div class="stat-item">
+        <div class="stat-number" data-count="100">0</div>
+        <div class="stat-label">Cidades Destruídas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="7">0</div>
+        <div class="stat-label">Reinos Subjugados</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="1">0</div>
+        <div class="stat-label">Verdade</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="character" class="character">
+    <div class="section-header">
+      <h2>O Inimigo</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="character-container">
+      <div class="character-img-container">
+        <img src="imagens/noxar-ft.jpg" alt="Noxar" class="character-img"/>
+        <div class="character-overlay">
+          <h3>NOXAR</h3>
+          <p>"Destruição é apenas o começo..."</p>
+        </div>
+      </div>
+      <div class="character-description">
+        <h3>NOXAR</h3>
+        <p>Antigo guardião corrompido pelo poder das trevas, Noxar abandonou sua humanidade para se tornar o arauto do caos. Onde ele pisa, a esperança morre e apenas o vazio permanece.</p>
+        <ul class="character-traits">
+          <li><span>Origem:</span> Antes de se tornar Noxar, ele era Alaric, o Protetor de Elarion. Quando descobriu que a paz que defendia era construída sobre mentiras, sua sanidade desmoronou. O <strong style="color: #ff0000;">Coração das Trevas</strong>, um artefato proibido, consumiu sua alma e o transformou no ser de pura destruição que é hoje.</li>
+          <li><span>Objetivo:</span> Erradicar toda forma de ordem e verdade, deixando apenas o caos em seu lugar. Acredita que apenas através da destruição total o mundo pode ser purificado.</li>
+          <li><span>Poder:</span> Força Sombria — Manipulação de Trevas — Regeneração — Invocação de Espectros — Raios da Perdição.</li>
+        </ul>
+        <div class="power-levels">
+          <div class="power-meter">
+            <div class="power-label">Força</div>
+            <div class="power-bar"><span class="power-fill" data-width="95%"></span></div>
+          </div>
+          <div class="power-meter">
+            <div class="power-label">Destruição</div>
+            <div class="power-bar"><span class="power-fill" data-width="100%"></span></div>
+          </div>
+          <div class="power-meter">
+            <div class="power-label">Inteligência</div>
+            <div class="power-bar"><span class="power-fill" data-width="90%"></span></div>
+          </div>
+          <div class="power-meter">
+            <div class="power-label">Crueldade</div>
+            <div class="power-bar"><span class="power-fill" data-width="100%"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery-section">
+    <div class="section-header">
+      <h2>O Terror</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="imagens/noxar-quadro1.jpg" alt="Noxar - O Despertar" class="gallery-img">
+        <div class="gallery-caption">O Despertar</div>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/noxar-quadro2.jpg" alt="Noxar - O Exército das Sombras" class="gallery-img">
+        <div class="gallery-caption">O Exército</div>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/noxar-quadro3.jpg" alt="Noxar - O Juízo Final" class="gallery-img">
+        <div class="gallery-caption">O Juízo</div>
+      </div>
+    </div>
+    <div class="gallery-controls">
+      <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
+      <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="quote-container">
+      <blockquote class="quote-text">
+        "Quando tudo cair, quando não restar pedra sobre pedra, quando os últimos gritos se calarem... eu ainda estarei de pé. Inabalável. Noxar."
+      </blockquote>
+      <cite class="quote-author">- Noxar</cite>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">NOXAR</div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+      </div>
+      <div class="footer-newsletter">
+        <p>Quer se juntar o abismo?</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Seu e-mail" required>
+          <button type="submit">Assinar <i class="fas fa-arrow-right"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 NOXAR - Todos os direitos fictícios reservados.</p>
+      <div class="footer-links">
+        <a href="#">Termos</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Contato</a>
+      </div>
+    </div>
+
+    <div class="switch-character">
+      <a href="heroi.html" class="switch-btn">
+        <span>Ir para a Luz</span>
+        <i class="fas fa-sun"></i>
+      </a>
+    </div>
+  </footer>
+
+  <div class="cursor-follower"></div>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="vilao.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GUARDIÃO CELESTIAL - O protetor da luz contra as trevas">
+  <title>GUARDIÃO CELESTIAL</title>
+  <link rel="stylesheet" href="heroi.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+  <div class="loading-screen">
+    <div class="loader"></div>
+    <p class="loading-text">Carregando a luz...</p>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+  </div>
+
+  <div class="particles-js" id="particles-js"></div>
+
+  <header class="hero" id="trailer">
+    <div class="video-container">
+      <video class="trailer" controls poster="thumb-hero.jpg" preload="auto">
+        <source src="video/trailer-hero.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo HTML5.
+      </video>
+      <div class="play-button" id="playButton">
+        <div class="pulse-ring"></div>
+      </div>
+    </div>
+    <div class="scroll-down">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </header>
+  
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="#" class="logo">GUARDIÃO CELESTIAL</a>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#about">A Missão</a></li>
+        <li><a href="#character">O Herói</a></li>
+        <li><a href="#gallery">A Lenda</a></li>
+        <li><a href="#trailer">Trailer</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="title-section">
+    <div class="light-rays"></div>
+    <h1 class="title-shining animate__animated animate__fadeIn">GUARDIÃO CELESTIAL</h1>
+  </section>
+
+  <section id="about" class="intro">
+    <div class="section-header">
+      <h2>A Missão Sagrada</h2>
+      <div class="section-divider"></div>
+    </div>
+    <p class="animate__animated animate__fadeInUp">
+      Nascido das estrelas e forjado na luz, ele é o escudo contra as trevas, a esperança em meio ao caos, o farol que guia os perdidos. Ele é... o Guardião Celestial.
+<br><br>
+Enquanto mil cidades clamavam por ajuda e sete reinos estavam à beira da destruição, os deuses enviaram seu campeão. Uma presença radiante caminhou entre as ruínas, trazendo esperança onde havia apenas desespero - um lembrete de que a luz sempre vence.
+<br><br>
+Chamam-no de salvador. De mito. Mas ele é real. É a encarnação de um único princípio: 1 Verdade.
+    </p>
+    <p class="highlight-text animate__animated animate__fadeInUp">
+      Quando as trevas ameaçavam engolir o mundo e os fracos perderam a esperança,  
+      ele surgiu. Não pediu gratidão. Não buscou glória.  
+      Caminhou entre os necessitados como o farol que o mundo tanto precisava.
+    </p>
+    <p class="animate__animated animate__fadeInUp">
+      Chamam de herói. De lenda. Mas ele é mais que isso. Ele é a esperança.
+    </p>
+    <div class="world-stats">
+      <div class="stat-item">
+        <div class="stat-number" data-count="1000">0</div>
+        <div class="stat-label">Vidas Salvas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="7">0</div>
+        <div class="stat-label">Reinos Protegidos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="1">0</div>
+        <div class="stat-label">Verdade</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="character" class="character">
+    <div class="section-header">
+      <h2>O Herói</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="character-container">
+      <div class="character-img-container">
+        <img src="imagens/heroi-ft.jpg" alt="Herói Celestial" class="character-img"/>
+        <div class="character-overlay">
+          <h3>ORION</h3>
+          <p>"A luz sempre encontrará um caminho..."</p>
+        </div>
+      </div>
+      <div class="character-description">
+        <h3>ORION</h3>
+        <p>Um guerreiro celestial enviado pelos deuses para proteger os inocentes e manter o equilíbrio entre luz e trevas. Seu nome vem da constelação que o guia, e seu coração pulsa com a energia das estrelas.</p>
+        <ul class="character-traits">
+          <li><span>Origem:</span> Antes de se tornar Orion, ele era um simples mortal chamado Elias, um astrônomo que dedicou sua vida a estudar as estrelas. Quando uma antiga profecia se cumpriu e as trevas ameaçaram engolir o mundo, as constelações se uniram e o escolheram como seu campeão. O <strong style="color: #00a8ff;">Núcleo Estelar</strong>, um artefato de pura energia celestial, se fundiu a ele, concedendo-lhe poderes além da compreensão mortal.</li>
+          <li><span>Objetivo:</span> Proteger os inocentes, manter o equilíbrio cósmico e inspirar esperança mesmo nos momentos mais sombrios.</li>
+          <li><span>Poder:</span> Força Celestial — Voo — Manipulação de Energia — Visão Estelar — Cura Divina.</li>
+        </ul>
+        <div class="power-levels">
+          <div class="power-meter">
+            <div class="power-label">Força</div>
+            <div class="power-bar"><span class="power-fill" data-width="90%"></span></div>
+          </div>
+          <div class="power-meter">
+            <div class="power-label">Velocidade</div>
+            <div class="power-bar"><span class="power-fill" data-width="95%"></span></div>
+          </div>
+          <div class="power-meter">
+            <div class="power-label">Sabedoria</div>
+            <div class="power-bar"><span class="power-fill" data-width="85%"></span></div>
+          </div>
+          <div class="power-meter">
+            <div class="power-label">Proteção</div>
+            <div class="power-bar"><span class="power-fill" data-width="100%"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery-section">
+    <div class="section-header">
+      <h2>A Lenda</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="imagens/heroi-quadro1.jpg" alt="Guardião Celestial - O Chamado" class="gallery-img">
+        <div class="gallery-caption">O Chamado</div>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/heroi-quadro2.jpg" alt="Guardião Celestial - O Voo" class="gallery-img">
+        <div class="gallery-caption">O Voo</div>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/heroi-quadro3.jpg" alt="Guardião Celestial - O Confronto" class="gallery-img">
+        <div class="gallery-caption">O Confronto</div>
+      </div>
+    </div>
+    <div class="gallery-controls">
+      <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
+      <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="quote-container">
+      <blockquote class="quote-text">
+        "Quando a escuridão parecer invencível, quando todos perderem a esperança, lembre-se - a luz sempre encontrará um caminho. Eu sou a prova disso."
+      </blockquote>
+      <cite class="quote-author">- Orion</cite>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">GUARDIÃO CELESTIAL</div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+      </div>
+      <div class="footer-newsletter">
+        <p>Quer se juntar à luz?</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Seu e-mail" required>
+          <button type="submit">Assinar <i class="fas fa-arrow-right"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 GUARDIÃO CELESTIAL - Todos os direitos fictícios reservados.</p>
+      <div class="footer-links">
+        <a href="#">Termos</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Contato</a>
+      </div>
+    </div>
+
+    <div class="switch-character">
+        <a href="vilao.html" class="switch-btn">
+          <span>Ir para a Escuridão</span>
+          <i class="fas fa-moon"></i>
+        </a>
+      </div>
+  </footer>
+
+  <div class="cursor-follower"></div>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="heroi.js"></script>
+</body>
+</html>
