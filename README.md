@@ -1,7 +1,4 @@
-# Inabalável
-
-[![GitHub stars](https://img.shields.io/github/stars/pablog-7/inabalavel-heroi-vilao?style=flat-square)](https://github.com/pablog-7/inabalavel-heroi-vilao/stargazers)  
-[![GitHub issues](https://img.shields.io/github/issues/pablog-7/inabalavel-heroi-vilao?style=flat-square)](https://github.com/pablog-7/inabalavel-heroi-vilao/issues)
+## Inabalável
 
 > “A luz sempre encontrará um caminho... ou as trevas consumirão tudo?”
 
@@ -80,6 +77,7 @@ Este projeto é estritamente proibido de ser copiado, distribuído, modificado o
 
 ## 📬 Contato
 GitHub: pablog-7
+
 Email: pablooliver853@gmail.com
 
-## Contribuições, sugestões e issues são bem-vindas, desde que respeitem a cláusula de direitos reservados acima!
+# Contribuições, sugestões e issues são bem-vindas, desde que respeitem a cláusula de direitos reservados acima!
