@@ -1,49 +1,85 @@
-## Inabalável
-Bem-vindo ao Inabalável, um projeto web que mergulha em um universo épico de fantasia, onde o conflito entre luz e trevas é personificado pelo herói Guardião Celestial (Orion) e o vilão Noxar. Este site, desenvolvido com HTML, CSS e JavaScript, apresenta uma experiência imersiva com animações, efeitos visuais e uma narrativa envolvente. Através do Portal de Escolha, os usuários decidem explorar o caminho da luz ou das trevas, descobrindo histórias, características e momentos marcantes de cada personagem.
+# Inabalável
 
-## 📖 Sobre o Projeto
-Inabalável é composto por três páginas principais:
+[![GitHub stars](https://img.shields.io/github/stars/pablog-7/inabalavel-heroi-vilao?style=flat-square)](https://github.com/pablog-7/inabalavel-heroi-vilao/stargazers)  
+[![GitHub issues](https://img.shields.io/github/issues/pablog-7/inabalavel-heroi-vilao?style=flat-square)](https://github.com/pablog-7/inabalavel-heroi-vilao/issues)
 
-Portal de Escolha (portal.html): A página inicial onde os usuários escolhem entre o caminho do herói (Guardião Celestial) ou do vilão (Noxar). Com um design minimalista e partículas animadas, a página cria uma atmosfera mística para a decisão.
-Guardião Celestial (heroi.html): Uma página dedicada a Orion, o herói celestial. Apresenta sua história, poderes, estatísticas e uma galeria de momentos épicos, com um tema visual azul e efeitos de luz.
-Noxar (vilao.html): Focado no vilão Noxar, esta página explora sua origem sombria, objetivos e poderes destrutivos. O tema vermelho e preto reforça a aura de caos e destruição.
+> “A luz sempre encontrará um caminho... ou as trevas consumirão tudo?”
 
-## Funcionalidades
+---
 
-Tela de Carregamento: Uma animação de carregamento com barra de progresso e texto dinâmico para uma transição suave.
-Partículas Animadas: Efeito de fundo com partículas interativas (via Particles.js) que mudam de cor com base na página (azul para o herói, vermelho para o vilão, misto no portal).
-Navegação Interativa: Menu fixo com toggle para dispositivos móveis e scroll suave para seções específicas.
-Galeria Interativa: Exibe imagens de momentos-chave com controles de navegação e efeitos de hover.
-Estatísticas Animadas: Contadores e barras de poder que se animam ao carregar a página, mostrando o impacto do herói e vilão.
-Cursor Personalizado: Um cursor circular que muda de tamanho e cor ao interagir com elementos clicáveis.
-Responsividade: Design otimizado para dispositivos móveis, tablets e desktops.
-Efeitos Visuais: Animações de fade-in, typewriter e hover, usando Animate.css e CSS puro.
-Alternância de Personagens: Botões no rodapé permitem alternar entre as páginas do herói e vilão.
+## 🔮 Visão Geral
 
-## 🛠 Tecnologias Utilizadas
+Inabalável é um site fictício que apresenta um universo épico de fantasia, onde o conflito entre luz e trevas ganha vida através de duas figuras arquetípicas:
 
-HTML5: Estrutura semântica das páginas.
-CSS3: Estilização com variáveis, animações, flexbox, grid e media queries para responsividade.
-JavaScript: Lógica para animações, interatividade (menu, galeria, cursor) e integração com Particles.js.
-Bibliotecas Externas:
-Particles.js: Para efeitos de partículas animadas.
-Font Awesome: Ícones usados na navegação e botões.
-Animate.css: Animações de entrada para textos e elementos.
-Google Fonts (Anton): Tipografia estilizada para títulos.
+- **Guardião Celestial (Orion)**: o herói da luz.  
+- **Noxar**: o vilão da escuridão.  
 
-## 🚀 Como Executar
+Construído com **HTML5**, **CSS3** e **JavaScript**, o projeto entrega um trailer de lançamento, uma experiência imersiva com animações, efeitos visuais dinâmicos e uma narrativa interativa.
 
-Clone o repositório:git clone https://github.com/pablog-7/inabalavel-heroi-vilao.git
+Veja a versão ao vivo:  
+[https://pablog-7.github.io/inabalavel-heroi-vilao/]
 
-## Explore:
-Na página inicial, escolha entre "Guardião Celestial" ou "Sombra Implacável".
-Navegue pelas seções de cada personagem usando o menu ou o botão de alternância no rodapé.
-(acesse aqui o projeto) - [(https://pablog-7.github.io/inabalavel-heroi-vilao/)]
+---
+
+## 📖 Páginas Principais
+
+1. **Portal de Escolha** (`index.html`)  
+   - Página inicial com design minimalista e partículas animadas.  
+   - Permite escolher o caminho da luz ou das trevas.  
+   - Paleta de cores mista (azul + vermelho) e atmosfera mística.
+
+2. **Guardião Celestial** (`heroi.html`)  
+   - Histórias, poderes e estatísticas de Orion.  
+   - Galeria de momentos épicos.  
+   - Tema visual em tons de azul e efeitos de luz.
+
+3. **Noxar** (`vilao.html`)  
+   - Origem sombria, objetivos e habilidades destrutivas de Noxar.  
+   - Galeria com cenas de caos.  
+   - Paleta vermelha e preta para reforçar a aura sombria.
+
+---
+
+## ✨ Funcionalidades e Efeitos
+
+- **Tela de Carregamento**: Animação de barra de progresso com texto dinâmico.  
+- **Partículas Animadas**: Fundo interativo via Particles.js, adaptando cores à página.  
+- **Navegação Responsiva**: Menu fixo, toggle mobile e scroll suave.  
+- **Galeria Interativa**: Navegação por controles e efeitos de hover.  
+- **Estatísticas Animadas**: Contadores e barras de poder dinâmicas.  
+- **Cursor Personalizado**: Cursor circular que muda de cor e tamanho.  
+- **Animações Visuais**: Efeitos de fade-in, typewriter e hover com Animate.css e CSS puro.  
+- **Alternância de Personagens**: Botões no rodapé para trocar entre herói e vilão.  
+- **Responsividade Completa**: Adaptado para dispositivos móveis, tablets e desktops.
+
+---
+
+## 🛠 Tecnologias
+
+- **HTML5**: Estrutura semântica.  
+- **CSS3**: Variáveis, Flexbox, Grid, Media Queries e animações.  
+- **JavaScript**: Lógica de interatividade e integração com Particles.js.  
+- **Particles.js**: Efeitos de partículas.  
+- **Animate.css**: Animações de entrada.  
+- **Font Awesome**: Ícones para navegação.  
+- **Google Fonts (Anton)**: Tipografia estilizada.
+
+---
+
+## 🚀 Execução Local
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/pablog-7/inabalavel-heroi-vilao.git
+   cd inabalavel-heroi-vilao
 
 ## 📜 Licença
-Este projeto é fictício e todos os direitos são reservados para os criadores do universo Inabalável (© 2025). O código é fornecido apenas para fins educacionais e de demonstração.
+Todos os direitos reservados © 2025 Pablo Gomes
+Este projeto é estritamente proibido de ser copiado, distribuído, modificado ou utilizado de qualquer forma sem autorização prévia e por escrito do autor. Qualquer uso não autorizado será considerado violação de direitos autorais.
 
 ## 📬 Contato
-Para dúvidas ou sugestões, entre em contato via [pablooliver853@gmail.com] ou abra uma issue no repositório.
+GitHub: pablog-7
+Email: pablooliver853@gmail.com
 
-### "A luz sempre encontrará um caminho... ou as trevas consumirão tudo?"
+## Contribuições, sugestões e issues são bem-vindas, desde que respeitem a cláusula de direitos reservados acima!
