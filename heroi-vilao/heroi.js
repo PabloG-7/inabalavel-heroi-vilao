@@ -261,6 +261,41 @@ const initTrailerControls = () => {
   window.addEventListener('scroll', handleVideoVisibility);
 };
 
+
+document.getElementById('videoContainer').addEventListener('click', function() {
+  const video = document.getElementById('heroTrailer');
+  
+  // Tenta entrar em tela cheia
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) { /* Safari */
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) { /* IE11 */
+    video.msRequestFullscreen();
+  }
+  
+  // Inicia a reprodução
+  video.play();
+  
+  // Esconde o botão de play
+  this.querySelector('.play-button').style.display = 'none';
+  
+  // Ativa controles durante a tela cheia
+  video.controls = true;
+});
+
+// Sai da tela cheia quando o vídeo terminar
+document.getElementById('heroTrailer').addEventListener('ended', function() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+});
+
+
 // Cursor personalizado
 const initCustomCursor = () => {
   const cursorFollower = document.querySelector('.cursor-follower');
