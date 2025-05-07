@@ -240,8 +240,6 @@ const initTrailerControls = () => {
     });
   }
 
-  
-
   window.addEventListener('scroll', handleVideoVisibility);
 };
 

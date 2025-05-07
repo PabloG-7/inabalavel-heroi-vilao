@@ -28,7 +28,7 @@ body {
   color: var(--text-light);
   overflow-x: hidden;
   line-height: 1.6;
-  cursor: none;
+  cursor:cell;
 }
 
 /* Tela de Carregamento */
@@ -114,20 +114,6 @@ body {
   left: 0;
   z-index: -1;
   background: transparent;
-}
-
-/* Cursor Personalizado */
-.cursor-follower {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  background-color: var(--hero-blue);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9998;
-  mix-blend-mode: difference;
-  transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease;
 }
 
 /* Hero Section - Trailer */

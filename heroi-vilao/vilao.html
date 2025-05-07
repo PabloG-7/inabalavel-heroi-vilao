@@ -25,7 +25,7 @@
   <header class="hero" id="trailer">
     <div class="trailer-container">
       <div class="trailer-overlay">
-        <h2 class="trailer-title">A ESCOURIDÃO SE APROXIMA</h2>
+        <h2 class="trailer-title">A ESCURIDÃO SE APROXIMA</h2>
         <p class="trailer-subtitle">Assista ao trailer da destruição</p>
         <div class="trailer-stats">
           <div class="stat-item">
@@ -39,21 +39,16 @@
         </div>
       </div>
       
-      <div class="video-container">
-        <video class="trailer" controls preload="auto">
+      <div class="video-container" id="vilaoVideoContainer">
+        <video class="trailer" id="vilaoTrailer">
           <source src="video-vilao/trailer.mp4" type="video/mp4">
           Seu navegador não suporta vídeo HTML5.
         </video>
-        <div class="play-button" id="playButton">
+        <div class="play-button" id="vilaoPlayButton">
           <i class="fas fa-play"></i>
           <div class="pulse-ring"></div>
         </div>
-        <div class="volume-control">
-          <i class="fas fa-volume-up"></i>
-          <input type="range" min="0" max="1" step="0.1" value="1" class="volume-slider">
-        </div>
       </div>
-    </div>
     
     <div class="scroll-down">
       <i class="fas fa-chevron-down"></i>

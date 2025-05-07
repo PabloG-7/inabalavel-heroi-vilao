@@ -195,71 +195,137 @@ window.addEventListener('scroll', () => {
   fadeInOnScroll();
 });
 
-// Controle do trailer
-const initTrailerControls = () => {
-  const playButton = document.getElementById('playButton');
-  const video = document.querySelector('.trailer');
-  const volumeControl = document.querySelector('.volume-slider');
-  const volumeIcon = document.querySelector('.volume-control i');
-
-  if (playButton && video) {
-    playButton.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
-        playButton.style.display = 'none';
-      } else {
-        video.pause();
-      }
-    });
-    
-    video.addEventListener('play', () => {
-      playButton.style.display = 'none';
-    });
-    
-    video.addEventListener('pause', () => {
-      playButton.style.display = 'flex';
-    });
+document.addEventListener('DOMContentLoaded', function() {
+  // Elementos do vídeo
+  const videoContainer = document.getElementById('vilaoVideoContainer');
+  const video = document.getElementById('vilaoTrailer');
+  const playButton = document.getElementById('vilaoPlayButton');
+  
+  // Verifica se os elementos existem
+  if (!videoContainer || !video || !playButton) {
+    console.error('Elementos do vídeo não encontrados!');
+    return;
   }
 
-  // Controle de volume
-  if (volumeControl && video && volumeIcon) {
-    volumeControl.addEventListener('input', (e) => {
-      video.volume = e.target.value;
-      
-      // Atualizar ícone do volume
-      if (video.volume == 0) {
-        volumeIcon.classList.remove('fa-volume-up');
-        volumeIcon.classList.add('fa-volume-mute');
-      } else if (video.volume < 0.5) {
-        volumeIcon.classList.remove('fa-volume-mute', 'fa-volume-up');
-        volumeIcon.classList.add('fa-volume-down');
-      } else {
-        volumeIcon.classList.remove('fa-volume-mute', 'fa-volume-down');
-        volumeIcon.classList.add('fa-volume-up');
-      }
-    });
-  }
-
-  // Pausar vídeo quando não estiver visível
-  const handleVideoVisibility = () => {
-    if (!video) return;
-    
-    const rect = video.getBoundingClientRect();
-    const isVisible = (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-    
-    if (!isVisible && !video.paused) {
+  // 1. Função para alternar play/pause
+  const togglePlay = () => {
+    if (video.paused) {
+      video.play()
+        .then(() => {
+          playButton.style.display = 'none';
+          enterFullscreen();
+        })
+        .catch(error => {
+          console.error('Erro ao reproduzir:', error);
+          // Mostra o botão se der erro
+          playButton.style.display = 'flex'; 
+        });
+    } else {
       video.pause();
-      if (playButton) playButton.style.display = 'flex';
     }
   };
 
-  window.addEventListener('scroll', handleVideoVisibility);
-};
+  // 2. Função para entrar em tela cheia
+  const enterFullscreen = () => {
+    if (!document.fullscreenElement) {
+      if (videoContainer.requestFullscreen) {
+        videoContainer.requestFullscreen().catch(e => {
+          console.log('Erro ao entrar em tela cheia:', e);
+        });
+      } else if (videoContainer.webkitRequestFullscreen) { /* Safari */
+        videoContainer.webkitRequestFullscreen();
+      } else if (videoContainer.msRequestFullscreen) { /* IE11 */
+        videoContainer.msRequestFullscreen();
+      }
+    }
+  };
+
+  // 3. Função para sair do fullscreen
+  const exitFullscreen = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) { /* Safari */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { /* IE11 */
+      document.msExitFullscreen();
+    }
+  };
+
+  // 4. Evento de clique no container
+  videoContainer.addEventListener('click', () => {
+    togglePlay();
+  });
+
+  // 5. Eventos de teclado (Espaço/Enter)
+  videoContainer.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' || e.code === 'Enter') {
+      e.preventDefault(); // Evita scroll com espaço
+      togglePlay();
+    }
+  });
+
+  // 6. Atualizar estado do botão play
+  video.addEventListener('play', () => {
+    playButton.style.display = 'none';
+  });
+
+  video.addEventListener('pause', () => {
+    // Só mostra o botão se não estiver em fullscreen
+    if (!document.fullscreenElement) {
+      playButton.style.display = 'flex';
+    }
+  });
+
+  // 7. Evento quando o vídeo termina
+  video.addEventListener('ended', () => {
+    exitFullscreen();
+    playButton.style.display = 'flex';
+  });
+
+  // 8. Observar mudanças no fullscreen
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && !video.paused) {
+      video.pause();
+    }
+  });
+
+  // 9. Focar o container para funcionar teclado
+  videoContainer.setAttribute('tabindex', '0');
+  videoContainer.focus();
+
+  // 10. Controle de volume (opcional)
+  const volumeControl = () => {
+    const volumeSlider = document.createElement('input');
+    volumeSlider.type = 'range';
+    volumeSlider.min = '0';
+    volumeSlider.max = '1';
+    volumeSlider.step = '0.1';
+    volumeSlider.value = video.volume;
+    volumeSlider.style.position = 'absolute';
+    volumeSlider.style.bottom = '20px';
+    volumeSlider.style.right = '20px';
+    volumeSlider.style.width = '100px';
+    volumeSlider.style.zIndex = '10';
+    
+    volumeSlider.addEventListener('input', (e) => {
+      video.volume = e.target.value;
+    });
+    
+    videoContainer.appendChild(volumeSlider);
+    
+    // Mostrar/ocultar controle
+    videoContainer.addEventListener('mouseenter', () => {
+      volumeSlider.style.opacity = '1';
+    });
+    
+    videoContainer.addEventListener('mouseleave', () => {
+      volumeSlider.style.opacity = '0';
+    });
+  };
+
+  // Inicializar controle de volume (descomente se quiser)
+  // volumeControl();
+});
 
 // Animar números estatísticos
 function animateStats() {
