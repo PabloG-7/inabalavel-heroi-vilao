@@ -44,7 +44,7 @@
           <source src="video-heroi/trailer-heroi.mp4" type="video/mp4">
           Seu navegador não suporta vídeo HTML5.
         </video>
-        <div class="play-button">
+        <div class="play-button" id="playButton">
           <i class="fas fa-play"></i>
         </div>
       </div>
@@ -230,3 +230,49 @@ Chamam-no de salvador. De mito. Mas ele é real. É a encarnação de um único 
   <script src="heroi.js"></script>
 </body>
 </html>
+
+<script>
+  const videoContainer = document.getElementById('videoContainer');
+  const video = document.getElementById('heroTrailer');
+  const playButton = document.getElementById('playButton');
+  
+  // Função para alternar play/pause
+  function togglePlay() {
+    if (video.paused) {
+      video.play();
+      playButton.style.display = 'none';
+    } else {
+      video.pause();
+      playButton.style.display = 'flex';
+    }
+  }
+  
+  // Clicar em qualquer lugar do container
+  videoContainer.addEventListener('click', function() {
+    togglePlay();
+  });
+  
+  // Tecla espaço ou enter também funcionam
+  videoContainer.addEventListener('keypress', function(e) {
+    if (e.code === 'Space' || e.code === 'Enter') {
+      togglePlay();
+    }
+  });
+  
+  // Mostrar botão quando o vídeo pausar
+  video.addEventListener('pause', function() {
+    playButton.style.display = 'flex';
+  });
+  
+  // Esconder botão quando o vídeo começar
+  video.addEventListener('play', function() {
+    playButton.style.display = 'none';
+  });
+  
+  // Tela cheia ao dar play (opcional)
+  video.addEventListener('play', function() {
+    if (screenfull.isEnabled) {
+      screenfull.request(videoContainer);
+    }
+  });
+  </script>
