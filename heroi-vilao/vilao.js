@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const loadingScreen = document.querySelector('.loading-screen');
   const progressBar = document.querySelector('.progress');
   const loadingText = document.querySelector('.loading-text');
-  
+
   // Simular progresso de carregamento
   let progress = 0;
   const interval = setInterval(() => {
     progress += Math.random() * 10;
     if (progress > 100) progress = 100;
     progressBar.style.width = `${progress}%`;
-    
+
     if (progress === 100) {
       clearInterval(interval);
       loadingText.textContent = "Pronto para o abismo...";
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 500);
     }
   }, 200);
-  
+
   // Inicializar particles.js
   if (window.particlesJS) {
     particlesJS('particles-js', {
@@ -144,10 +144,10 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
-    
+
     const targetId = this.getAttribute('href');
     const targetElement = document.querySelector(targetId);
-    
+
     if (targetElement) {
       window.scrollTo({
         top: targetElement.offsetTop - 80,
@@ -168,11 +168,11 @@ document.querySelector('.scroll-down').addEventListener('click', () => {
 // Efeito de aparecimento ao scroll
 const fadeInOnScroll = () => {
   const fadeElements = document.querySelectorAll('.fade-in-scroll');
-  
+
   fadeElements.forEach(element => {
     const elementTop = element.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
-    
+
     if (elementTop < windowHeight - 100) {
       element.classList.add('fade-in');
     }
@@ -191,153 +191,132 @@ window.addEventListener('scroll', () => {
     nav.style.padding = '1.5rem 2rem';
     nav.style.boxShadow = 'none';
   }
-  
+
   fadeInOnScroll();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Elementos do vídeo
-  const videoContainer = document.getElementById('vilaoVideoContainer');
+// Controle do trailer
+const initTrailerControls = () => {
+  const playButton = document.getElementById('playButton');
   const video = document.getElementById('vilaoTrailer');
-  const playButton = document.getElementById('vilaoPlayButton');
-  
-  // Verifica se os elementos existem
-  if (!videoContainer || !video || !playButton) {
-    console.error('Elementos do vídeo não encontrados!');
-    return;
+  const volumeControl = document.querySelector('.volume-slider');
+  const volumeIcon = document.querySelector('.volume-control i');
+
+  if (playButton && video) {
+    playButton.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        playButton.style.display = 'none';
+      } else {
+        video.pause();
+      }
+    });
+
+    video.addEventListener('play', () => {
+      playButton.style.display = 'none';
+    });
+
+    video.addEventListener('pause', () => {
+      playButton.style.display = 'flex';
+    });
   }
 
-  // 1. Função para alternar play/pause
-  const togglePlay = () => {
-    if (video.paused) {
-      video.play()
-        .then(() => {
-          playButton.style.display = 'none';
-          enterFullscreen();
-        })
-        .catch(error => {
-          console.error('Erro ao reproduzir:', error);
-          // Mostra o botão se der erro
-          playButton.style.display = 'flex'; 
-        });
-    } else {
-      video.pause();
-    }
-  };
-
-  // 2. Função para entrar em tela cheia
-  const enterFullscreen = () => {
-    if (!document.fullscreenElement) {
-      if (videoContainer.requestFullscreen) {
-        videoContainer.requestFullscreen().catch(e => {
-          console.log('Erro ao entrar em tela cheia:', e);
-        });
-      } else if (videoContainer.webkitRequestFullscreen) { /* Safari */
-        videoContainer.webkitRequestFullscreen();
-      } else if (videoContainer.msRequestFullscreen) { /* IE11 */
-        videoContainer.msRequestFullscreen();
-      }
-    }
-  };
-
-  // 3. Função para sair do fullscreen
-  const exitFullscreen = () => {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) { /* Safari */
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) { /* IE11 */
-      document.msExitFullscreen();
-    }
-  };
-
-  // 4. Evento de clique no container
-  videoContainer.addEventListener('click', () => {
-    togglePlay();
-  });
-
-  // 5. Eventos de teclado (Espaço/Enter)
-  videoContainer.addEventListener('keydown', (e) => {
-    if (e.code === 'Space' || e.code === 'Enter') {
-      e.preventDefault(); // Evita scroll com espaço
-      togglePlay();
-    }
-  });
-
-  // 6. Atualizar estado do botão play
-  video.addEventListener('play', () => {
-    playButton.style.display = 'none';
-  });
-
-  video.addEventListener('pause', () => {
-    // Só mostra o botão se não estiver em fullscreen
-    if (!document.fullscreenElement) {
-      playButton.style.display = 'flex';
-    }
-  });
-
-  // 7. Evento quando o vídeo termina
-  video.addEventListener('ended', () => {
-    exitFullscreen();
-    playButton.style.display = 'flex';
-  });
-
-  // 8. Observar mudanças no fullscreen
-  document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement && !video.paused) {
-      video.pause();
-    }
-  });
-
-  // 9. Focar o container para funcionar teclado
-  videoContainer.setAttribute('tabindex', '0');
-  videoContainer.focus();
-
-  // 10. Controle de volume (opcional)
-  const volumeControl = () => {
-    const volumeSlider = document.createElement('input');
-    volumeSlider.type = 'range';
-    volumeSlider.min = '0';
-    volumeSlider.max = '1';
-    volumeSlider.step = '0.1';
-    volumeSlider.value = video.volume;
-    volumeSlider.style.position = 'absolute';
-    volumeSlider.style.bottom = '20px';
-    volumeSlider.style.right = '20px';
-    volumeSlider.style.width = '100px';
-    volumeSlider.style.zIndex = '10';
-    
-    volumeSlider.addEventListener('input', (e) => {
+  // Controle de volume
+  if (volumeControl && video && volumeIcon) {
+    volumeControl.addEventListener('input', (e) => {
       video.volume = e.target.value;
-    });
-    
-    videoContainer.appendChild(volumeSlider);
-    
-    // Mostrar/ocultar controle
-    videoContainer.addEventListener('mouseenter', () => {
-      volumeSlider.style.opacity = '1';
-    });
-    
-    videoContainer.addEventListener('mouseleave', () => {
-      volumeSlider.style.opacity = '0';
-    });
-  };
 
-  // Inicializar controle de volume (descomente se quiser)
-  // volumeControl();
+      // Atualizar ícone do volume
+      if (video.volume == 0) {
+        volumeIcon.classList.remove('fa-volume-up');
+        volumeIcon.classList.add('fa-volume-mute');
+      } else if (video.volume < 0.5) {
+        volumeIcon.classList.remove('fa-volume-mute', 'fa-volume-up');
+        volumeIcon.classList.add('fa-volume-down');
+      } else {
+        volumeIcon.classList.remove('fa-volume-mute', 'fa-volume-down');
+        volumeIcon.classList.add('fa-volume-up');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', handleVideoVisibility);
+};
+
+document.getElementById('videoContainer').addEventListener('click', function() {
+  const video = document.getElementById('vilaoTrailer');
+
+  // Tenta entrar em tela cheia
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) { /* Safari */
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) { /* IE11 */
+    video.msRequestFullscreen();
+  }
+
+  // Inicia a reprodução
+  video.play();
+
+  // Esconde o botão de play
+  this.querySelector('.play-button').style.display = 'none';
+
+  // Ativa controles durante a tela cheia
+  video.controls = true;
 });
+
+// Sai da tela cheia quando o vídeo terminar
+document.getElementById('vilaoTrailer').addEventListener('ended', function() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+});
+
+// Cursor personalizado
+const initCustomCursor = () => {
+  const cursorFollower = document.querySelector('.cursor-follower');
+
+  if (cursorFollower) {
+    document.addEventListener('mousemove', (e) => {
+      cursorFollower.style.left = `${e.clientX}px`;
+      cursorFollower.style.top = `${e.clientY}px`;
+    });
+
+    // Efeitos de hover no cursor
+    const hoverElements = document.querySelectorAll('a, button, .gallery-item, .play-button, .nav-toggle');
+
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorFollower.style.transform = 'translate(-50%, -50%) scale(2)';
+        cursorFollower.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+      });
+      
+      el.addEventListener('mouseleave', () => {
+        cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursorFollower.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
+      });
+    });
+
+    // Mostrar cursor mesmo em dispositivos touch (opcional)
+    cursorFollower.style.display = 'block';
+  }
+};
 
 // Animar números estatísticos
 function animateStats() {
   const statNumbers = document.querySelectorAll('.stat-number');
-  
+
   statNumbers.forEach(stat => {
     const target = parseInt(stat.getAttribute('data-count'));
     const duration = 2000;
     const start = 0;
     const increment = target / (duration / 16);
     let current = start;
-    
+
     const timer = setInterval(() => {
       current += increment;
       if (current >= target) {
@@ -352,7 +331,7 @@ function animateStats() {
 // Animar barras de poder
 function animatePowerBars() {
   const powerBars = document.querySelectorAll('.power-fill');
-  
+
   powerBars.forEach(bar => {
     const width = bar.getAttribute('data-width');
     bar.style.width = width;
@@ -365,15 +344,15 @@ function initGallery() {
   const prevBtn = document.querySelector('.gallery-prev');
   const nextBtn = document.querySelector('.gallery-next');
   let currentIndex = 0;
-  
+
   if (galleryItems.length > 0) {
     galleryItems[currentIndex].classList.add('active');
-    
+
     function showItem(index) {
       galleryItems.forEach(item => item.classList.remove('active'));
       galleryItems[index].classList.add('active');
     }
-    
+
     if (prevBtn && nextBtn) {
       prevBtn.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
@@ -385,7 +364,7 @@ function initGallery() {
         showItem(currentIndex);
       });
     }
-    
+
     // Navegação por teclado
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') {
@@ -406,14 +385,15 @@ function initAnimations() {
   animateElements.forEach(el => {
     el.classList.add('fade-in-scroll');
   });
-  
+
   // Disparar animações iniciais
   fadeInOnScroll();
   animateStats();
   animatePowerBars();
   initGallery();
   initTrailerControls();
-  
+  initCustomCursor();
+
   // Observador de elementos para animação
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -423,7 +403,7 @@ function initAnimations() {
       }
     });
   }, { threshold: 0.1 });
-  
+
   document.querySelectorAll('.fade-in-scroll').forEach(el => {
     observer.observe(el);
   });
