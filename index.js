@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
           loadingScreen.style.display = 'none';
           initHoverEffects();
+          setupRandomChoice();
         }, 500);
       }, 300);
     }
@@ -63,6 +64,64 @@ function initHoverEffects() {
       setTimeout(() => card.classList.remove('active-hover'), 300);
     });
   });
+}
+
+// Função para escolha aleatória
+function setupRandomChoice() {
+  const randomBtn = document.getElementById('randomChoiceBtn');
+  const heroBtn = document.querySelector('.hero-choice .choice-btn');
+  const villainBtn = document.querySelector('.villain-choice .choice-btn');
+  
+  if (!randomBtn || !heroBtn || !villainBtn) return;
+  
+  randomBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Efeito visual de rolagem
+    randomBtn.disabled = true;
+    randomBtn.querySelector('span').textContent = 'Decidindo destino...';
+    randomBtn.querySelector('i').classList.add('fa-spin');
+    
+    // Cria efeito de piscar nos cards
+    const cards = document.querySelectorAll('.choice-card');
+    let flashes = 0;
+    const maxFlashes = 5;
+    const flashInterval = 300;
+    
+    const flashCards = setInterval(() => {
+      cards.forEach(card => {
+        card.style.boxShadow = `0 0 ${flashes % 2 === 0 ? '30px' : '15px'} ${
+          card.classList.contains('hero-choice') ? 'var(--hero-blue)' : 'var(--villain-red)'
+        }`;
+      });
+      
+      flashes++;
+      if (flashes >= maxFlashes * 2) {
+        clearInterval(flashCards);
+        cards.forEach(card => card.style.boxShadow = '');
+        makeRandomChoice();
+      }
+    }, flashInterval);
+  });
+  
+  function makeRandomChoice() {
+    const choices = ['hero', 'villain'];
+    const randomChoice = choices[Math.floor(Math.random() * choices.length)];
+    
+    // Efeito visual de seleção
+    const selectedCard = randomChoice === 'hero' 
+      ? document.querySelector('.hero-choice')
+      : document.querySelector('.villain-choice');
+    
+    selectedCard.classList.add('chosen-randomly');
+    
+    // Animação antes de redirecionar
+    setTimeout(() => {
+      window.location.href = randomChoice === 'hero' 
+        ? heroBtn.href 
+        : villainBtn.href;
+    }, 1000);
+  }
 }
 
 // Pré-carregar páginas de destino
