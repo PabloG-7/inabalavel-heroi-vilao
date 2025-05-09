@@ -119,7 +119,7 @@ body {
 .hero {
   position: relative;
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), 
-              url('img-vilao/quadrinhos3.jpg') center/620px repeat;
+              url('img-vilao/quadrinhos1.jpg') center/620px repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
