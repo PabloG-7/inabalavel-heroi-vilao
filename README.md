@@ -16,25 +16,22 @@ Inabalável é um site fictício que apresenta um universo épico de fantasia, o
 
 Construído com **HTML5**, **CSS3** e **JavaScript**, o projeto entrega um trailer de lançamento, uma experiência imersiva com animações, efeitos visuais dinâmicos e uma narrativa interativa.
 
-Veja a versão ao vivo:  
-[https://pablog-7.github.io/inabalavel-heroi-vilao/]
-
 ---
 
 ## 📖 Páginas Principais
 
 1. **Portal de Escolha** (`index.html`)  
-   - Página inicial com design minimalista e partículas animadas.  
-   - Permite escolher o caminho da luz ou das trevas.  
+   - Página inicial com design minimalista.  
+   - Permite escolher ou o destino escolhe qual será seu rumo... da luz ou das trevas.  
    - Paleta de cores mista (azul + vermelho) e atmosfera mística.
 
 2. **Guardião Celestial** (`heroi.html`)  
-   - Histórias, poderes e estatísticas de Orion.  
+   - Histórias, Trailer do Herói, Poderes e Estatísticas de Orion.  
    - Galeria de momentos épicos.  
    - Tema visual em tons de azul e efeitos de luz.
 
 3. **Noxar** (`vilao.html`)  
-   - Origem sombria, objetivos e habilidades destrutivas de Noxar.  
+   - Origem sombria, Trailer do Vilão, objetivos e habilidades destrutivas de Noxar.  
    - Galeria com cenas de caos.  
    - Paleta vermelha e preta para reforçar a aura sombria.
 
@@ -79,8 +76,5 @@ Todos os direitos reservados © 2025 Pablo Gomes
 Este projeto é estritamente proibido de ser copiado, distribuído, modificado ou utilizado de qualquer forma sem autorização prévia e por escrito do autor. Qualquer uso não autorizado será considerado violação de direitos autorais.
 
 ## 📬 Contato
-GitHub: pablog-7
-
-Email: pablooliver853@gmail.com
-
-# Contribuições, sugestões e issues são bem-vindas, desde que respeitem a cláusula de direitos reservados acima!
+>GitHub: pablog-7
+>Email: pablooliver853@gmail.com
