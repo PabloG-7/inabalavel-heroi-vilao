@@ -7,217 +7,661 @@
   <title>Noxar | Inabalável</title>
   <link rel="stylesheet" href="vilao.css" />
   <link rel="shortcut icon" href="img-vilao/trovao-red.png" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Cursor Personalizado 3D -->
+  <div class="custom-cursor">
+    <div class="cursor-core"></div>
+    <div class="cursor-aura"></div>
+  </div>
+  
+  <!-- Tela de Carregamento Imersiva -->
   <div class="loading-screen">
-    <div class="loader"></div>
-    <p class="loading-text">Carregando a escuridão...</p>
-    <div class="progress-bar">
-      <div class="progress"></div>
+    <div class="starry-background"></div>
+    <div class="loader-container">
+      <div class="quantum-loader">
+        <div class="quantum-dot"></div>
+        <div class="quantum-ring"></div>
+      </div>
+      <p class="loading-text">Inicializando sistemas sombrios...</p>
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+          <div class="progress-pulse"></div>
+        </div>
+        <span class="progress-percent">0%</span>
+      </div>
+      <div class="loading-hint">
+        <span>Dica: Noxar obtém seus poderes do vazio entre as estrelas</span>
+      </div>
     </div>
   </div>
 
-  <div class="particles-js" id="particles-js"></div>
-
-  <header class="hero" id="trailer">
-    <div class="trailer-container">
-      <div class="trailer-overlay">
-        <h2 class="trailer-title">A ESCURIDÃO SE APROXIMA</h2>
-        <p class="trailer-subtitle">Assista ao trailer da destruição</p>
-        <div class="trailer-stats">
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Classificação Sombria</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">18+</div>
-            <div class="stat-label">Violência Extrema</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="video-container" id="videoContainer">
-        <video class="trailer" id="vilaoTrailer">
-          <source src="video-vilao/trailer-vilao.mp4" type="video/mp4">
-          Seu navegador não suporta vídeo HTML5.
-        </video>
-        <div class="play-button" id="playButton">
-          <i class="fas fa-play"></i>
-          <div class="pulse-ring"></div>
-        </div>
-        <div class="volume-control">
-          <i class="fas fa-volume-up"></i>
-          <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1">
-        </div>
-      </div>
-    
-    <div class="scroll-down">
-      <i class="fas fa-chevron-down"></i>
-      <span>Desça para o abismo</span>
-    </div>
-  </header>
+  <!-- Efeito de Partículas Sombrias -->
+  <div id="particles-js"></div>
   
+  <!-- Menu de Navegação Sombrio -->
   <nav class="main-nav">
     <div class="nav-container">
-      <a href="#" class="logo">INABALÁVEL</a>
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <div class="logo-orb"></div>
+          <i class="fas fa-skull"></i>
+        </div>
+        <span class="logo-text">INABALÁVEL</span>
+      </a>
       <div class="nav-toggle">
         <span></span>
         <span></span>
         <span></span>
       </div>
       <ul class="nav-menu">
-        <li><a href="#about">A Ascensão</a></li>
-        <li><a href="#character">O Inimigo</a></li>
-        <li><a href="#gallery">O Terror</a></li>
-        <li><a href="#trailer">Trailer</a></li>
+        <li><a href="#about" data-text="A Queda"><span class="nav-glow"></span>A Queda</a></li>
+        <li><a href="#character" data-text="O Vilão"><span class="nav-glow"></span>O Vilão</a></li>
+        <li><a href="#powers" data-text="Poderes"><span class="nav-glow"></span>Poderes</a></li>
+        <li><a href="#gallery" data-text="O Pesadelo"><span class="nav-glow"></span>O Pesadelo</a></li>
+        <li><a href="#trailer" data-text="Trailer"><span class="nav-glow"></span>Trailer</a></li>
       </ul>
     </div>
+    <div class="nav-aura"></div>
   </nav>
 
+  <!-- Seção Hero com Vídeo de Fundo -->
+  <header class="hero" id="trailer">
+    <div class="hero-video">
+      <video autoplay muted loop playsinline>
+        <source src="video-vilao/dark-background.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text" data-aos="fade-up" data-aos-delay="300">
+        <div class="title-container">
+          <h1 class="hero-title">
+            <span class="title-line">NOXAR</span>
+            <span class="title-line">A SOMBRA</span>
+          </h1>
+          <div class="title-sparkle"></div>
+        </div>
+        <p class="hero-subtitle">Quando a luz se apagar, as trevas reinarão</p>
+        <div class="hero-cta">
+          <button class="cta-button pulse">
+            <span class="btn-shine"></span>
+            <span class="btn-text">Assista ao Trailer</span>
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+      </div>
+      <div class="hero-character">
+        <img src="img-vilao/noxar-3d.png" data-aos="fade-up" data-aos-delay="300" alt="Noxar" class="character-3d">
+        <div class="character-light"></div>
+      </div>
+    </div>
+    
+    <div class="scroll-down">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <span>Desça para o abismo</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- Modal do Trailer Sombrio -->
+  <div class="trailer-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-hologram"></div>
+      <button class="modal-close"><i class="fas fa-times"></i></button>
+      <div class="video-container">
+        <video id="vilaoTrailer" controls>
+          <source src="video-vilao/trailer-vilao.mp4" type="video/mp4">
+          Seu navegador não suporta vídeo HTML5.
+        </video>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action">
+          <i class="fas fa-share-alt"></i> Compartilhar
+        </button>
+        <button class="modal-action">
+          <i class="fas fa-download"></i> Download
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção de Título com Efeito de Constelação Sombria -->
   <section class="title-section">
-    <div class="blood-drips"></div>
-    <h1 class="title-bloody animate__animated animate__fadeIn">SOMBRA IMPLACÁVEL</h1>
+    <div class="constellation">
+      <div class="star" style="top: 15%; left: 20%;"></div>
+      <div class="star" style="top: 25%; left: 70%;"></div>
+      <div class="star" style="top: 60%; left: 30%;"></div>
+      <div class="star" style="top: 80%; left: 80%;"></div>
+      <div class="star" style="top: 40%; left: 50%;"></div>
+      <div class="connecting-line" style="width: 30%; top: 20%; left: 20%; transform: rotate(45deg);"></div>
+      <div class="connecting-line" style="width: 25%; top: 65%; left: 30%; transform: rotate(-20deg);"></div>
+    </div>
+    <div class="title-container" data-aos="zoom-in">
+      <div class="title-badge">
+        <div class="badge-ornament"></div>
+        <h1 class="title-shining">A ERA DA DESTRUIÇÃO</h1>
+        <div class="badge-ornament"></div>
+      </div>
+      <div class="title-divider">
+        <div class="divider-orb"></div>
+      </div>
+      <p class="title-description">Quando o mundo mais precisou de um herói, as trevas enviaram seu arauto</p>
+    </div>
   </section>
 
+  <!-- Seção Sobre com Efeito de Abismo -->
   <section id="about" class="intro">
-    <div class="section-header">
-      <h2>A Ascensão das Trevas</h2>
+    <div class="abyss-bg"></div>
+    <div class="section-header" data-aos="fade-up">
+      <h2>A Queda Inevitável</h2>
       <div class="section-divider"></div>
     </div>
-    <p class="animate__animated animate__fadeInUp">
-      Forjado nas profundezas do abismo e alimentado pela dor, ele não é apenas um vilão - é a encarnação do caos, o fim inevitável, a verdade que ninguém ousa encarar. Ele é... Noxar.
-<br><br>
-Enquanto 100 cidades eram reduzidas a cinzas e sete reinos caíam em desespero, os deuses se esconderam. Mas uma presença emergiu das sombras, sem piedade, sem remorso - um aviso do que acontece quando a luz se apaga.
-<br><br>
-Chamam-no de monstro. De lenda. Mas ele não é mito. É a consequência de um único princípio: 1 Verdade.
-    </p>
-    <p class="highlight-text animate__animated animate__fadeInUp">
-      Quando as nações desmoronaram e os heróis falharam,  
-      ele se levantou. Não para salvar, mas para punir.  
-      Caminhou entre os fracos como o juiz que o mundo não merecia, mas precisava.
-    </p>
-    <p class="animate__animated animate__fadeInUp">
-      Chamam de destruidor. De maldição. Mas ele é mais que isso. Ele é o fim.
-    </p>
-    <div class="world-stats">
-      <div class="stat-item">
-        <div class="stat-number" data-count="100">0</div>
-        <div class="stat-label">Cidades Destruídas</div>
+    <div class="intro-content">
+      <div class="intro-text" data-aos="fade-right">
+        <p class="reveal-text">
+          Nascido do vazio entre as estrelas e forjado na escuridão, ele é a espada contra a luz, o caos em meio à ordem, o abismo que engole os perdidos. Ele é... Noxar.
+        </p>
+        <p class="reveal-text">
+          Enquanto mil cidades clamavam por salvação e sete reinos estavam à beira da redenção, o vazio enviou seu arauto. Uma presença sombria caminhou entre as ruínas, trazendo desespero onde havia apenas esperança - um lembrete de que a escuridão sempre vence.
+        </p>
       </div>
-      <div class="stat-item">
-        <div class="stat-number" data-count="7">0</div>
-        <div class="stat-label">Reinos Subjugados</div>
+      <div class="intro-highlight" data-aos="fade-left">
+        <div class="highlight-content">
+          <div class="quote-marks">
+            <i class="fas fa-quote-left"></i>
+            <i class="fas fa-quote-right"></i>
+          </div>
+          <p class="typewriter">"Quando a luz parecia invencível, quando todos acreditavam na vitória, ele surgiu. Não pediu submissão. Não buscou medo. Caminhou entre os confiantes como o pesadelo que o mundo tanto temia."</p>
+          <div class="highlight-author">
+            <div class="author-avatar"></div>
+            <span>Crônicas das Trevas</span>
+          </div>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number" data-count="1">0</div>
-        <div class="stat-label">Verdade</div>
+      <div class="intro-stats" data-aos="fade-up">
+        <div class="world-stats">
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-city"></i>
+              <div class="stat-pulse"></div>
+            </div>
+            <div class="stat-number" data-count="1000">0</div>
+            <div class="stat-label">Vidas Consumidas</div>
+            <div class="stat-underline"></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-landmark"></i>
+              <div class="stat-pulse"></div>
+            </div>
+            <div class="stat-number" data-count="7">0</div>
+            <div class="stat-label">Reinos Destruídos</div>
+            <div class="stat-underline"></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-star"></i>
+              <div class="stat-pulse"></div>
+            </div>
+            <div class="stat-number" data-count="1">0</div>
+            <div class="stat-label">Verdade</div>
+            <div class="stat-underline"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Seção do Personagem com Modelo 3D -->
   <section id="character" class="character">
-    <div class="section-header">
-      <h2>O Inimigo</h2>
+    <div class="section-header" data-aos="fade-up">
+      <h2>O Vilão</h2>
       <div class="section-divider"></div>
     </div>
     <div class="character-container">
-      <div class="character-img-container">
-        <img src="img-vilao/ft-vilao.jpg" alt="Noxar" class="character-img"/>
-        <div class="character-overlay">
-          <h3>NOXAR</h3>
-          <p>"Destruição é apenas o começo..."</p>
+      <div class="character-img-container" data-aos="fade-right">
+        <div class="character-img-wrapper">
+          <img src="img-vilao/ft-vilao.jpg" alt="Noxar" class="character-img"/>
+          <div class="character-badge">
+            <span>NOXAR</span>
+            <div class="badge-spark"></div>
+          </div>
+          <div class="character-hover-info">
+            <h3>Noxar - A Sombra</h3>
+            <p>Nível de Poder: <span>★★★★★</span></p>
+            <div class="character-tags">
+              <span>Sombrio</span>
+              <span>Destruidor</span>
+              <span>Abissal</span>
+            </div>
+          </div>
+        </div>
+        <div class="character-quote">
+          <p>"A escuridão sempre encontrará um caminho..."</p>
+          <div class="quote-signature">
+            <div class="signature-line"></div>
+            <span>Noxar</span>
+            <div class="signature-line"></div>
+          </div>
         </div>
       </div>
-      <div class="character-description">
-        <h3>NOXAR</h3>
-        <p>Antigo guardião corrompido pelo poder das trevas, Noxar abandonou sua humanidade para se tornar o arauto do caos. Onde ele pisa, a esperança morre e apenas o vazio permanece.</p>
-        <ul class="character-traits">
-          <li><span>Origem:</span> Antes de se tornar Noxar, ele era Alaric, o Protetor de Elarion. Quando descobriu que a paz que defendia era construída sobre mentiras, sua sanidade desmoronou. O <strong style="color: #ff0000;">Coração das Trevas</strong>, um artefato proibido, consumiu sua alma e o transformou no ser de pura destruição que é hoje.</li>
-          <li><span>Objetivo:</span> Erradicar toda forma de ordem e verdade, deixando apenas o caos em seu lugar. Acredita que apenas através da destruição total o mundo pode ser purificado.</li>
-          <li><span>Poder:</span> Força Sombria — Manipulação de Trevas — Regeneração — Invocação de Espectros — Raios da Perdição.</li>
-        </ul>
-        <div class="power-levels">
-          <div class="power-meter">
-            <div class="power-label">Força</div>
-            <div class="power-bar"><span class="power-fill" data-width="95%"></span></div>
+      <div class="character-description" data-aos="fade-left">
+        <div class="character-tabs">
+          <button class="tab-button active" data-tab="origin">
+            <i class="fas fa-skull"></i>
+            <span>Origem</span>
+          </button>
+          <button class="tab-button" data-tab="mission">
+            <i class="fas fa-bullseye"></i>
+            <span>Missão</span>
+          </button>
+          <button class="tab-button" data-tab="abilities">
+            <i class="fas fa-bolt"></i>
+            <span>Habilidades</span>
+          </button>
+        </div>
+        <div class="tab-content active" id="origin">
+          <p>Antes de se tornar Noxar, ele era um poderoso guardião chamado Alaric, protetor do reino de Elyria. Quando descobriu que a ordem que defendia era construída sobre mentiras, sua sanidade desmoronou. O <strong>Núcleo do Vazio</strong>, um artefato de pura energia sombria, se fundiu a ele, concedendo-lhe poderes além da compreensão mortal. Agora, como Noxar, ele é a encarnação viva da escuridão cósmica.</p>
+          <p>O <strong>Núcleo do Vazio</strong>, um artefato de energia sombria proibido, corrompeu sua essência, transformando-o no ser de pura destruição que é hoje.</p>
+          <div class="origin-timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4>Nascimento de Alaric</h4>
+                <p>Em uma fortaleza sob a constelação sombria</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4>Descoberta do Núcleo do Vazio</h4>
+                <p>Durante uma expedição às ruínas proibidas</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4>Corrupção</h4>
+                <p>A fusão com o Núcleo do Vazio</p>
+              </div>
+            </div>
           </div>
-          <div class="power-meter">
-            <div class="power-label">Destruição</div>
-            <div class="power-bar"><span class="power-fill" data-width="100%"></span></div>
+        </div>
+        <div class="tab-content" id="mission">
+          <p>Noxar foi despertado com um propósito claro: destruir os inocentes e desequilibrar o balanço cósmico entre luz e trevas. Sua missão vai além de simplesmente combater o bem - ele é um símbolo de desespero para todos os seres.</p>
+          <p>Em um universo onde o equilíbrio é frágil, Noxar serve como destruidor, garantindo que a escuridão nunca seja completamente banida, mesmo nos momentos mais luminosos.</p>
+          <div class="mission-map">
+            <div class="map-point" style="top: 30%; left: 20%;">
+              <div class="point-marker"></div>
+              <div class="point-info">Cidade das Cinzas</div>
+            </div>
+            <div class="map-point" style="top: 60%; left: 70%;">
+              <div class="point-marker"></div>
+              <div class="point-info">Templo Profanado</div>
+            </div>
+            <div class="map-point" style="top: 45%; left: 50%;">
+              <div class="point-marker"></div>
+              <div class="point-info">Torre de Noxar</div>
+            </div>
           </div>
-          <div class="power-meter">
-            <div class="power-label">Inteligência</div>
-            <div class="power-bar"><span class="power-fill" data-width="90%"></span></div>
-          </div>
-          <div class="power-meter">
-            <div class="power-label">Crueldade</div>
-            <div class="power-bar"><span class="power-fill" data-width="100%"></span></div>
-          </div>
+        </div>
+        <div class="tab-content" id="abilities">
+          <p>Como avatar das trevas, Noxar possui habilidades aterrorizantes:</p>
+          <ul class="abilities-list">
+            <li>
+              <div class="ability-icon">
+                <i class="fas fa-fist-raised"></i>
+              </div>
+              <div class="ability-info">
+                <h4>Força Abissal</h4>
+                <p>Poder físico amplificado pela energia sombria</p>
+                <div class="ability-meter">
+                  <div class="meter-fill" style="width: 95%;"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="ability-icon">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="ability-info">
+                <h4>Voo das Trevas</h4>
+                <p>Capacidade de navegar pelas sombras e pelo vazio</p>
+                <div class="ability-meter">
+                  <div class="meter-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="ability-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="ability-info">
+                <h4>Manipulação de Trevas</h4>
+                <p>Controle sobre a energia sombria</p>
+                <div class="ability-meter">
+                  <div class="meter-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="ability-icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <div class="ability-info">
+                <h4>Visão do Vazio</h4>
+                <p>Percepção além da realidade visível</p>
+                <div class="ability-meter">
+                  <div class="meter-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="ability-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <div class="ability-info">
+                <h4>Corrupção</h4>
+                <p>Capacidade de drenar energia vital</p>
+                <div class="ability-meter">
+                  <div class="meter-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="gallery" class="gallery-section">
-    <div class="section-header">
-      <h2>O Terror</h2>
+  <!-- Seção de Poderes com Visualização 3D -->
+  <section id="powers" class="powers-section">
+    <div class="section-header" data-aos="fade-up">
+      <h2>Poderes Sombrios</h2>
       <div class="section-divider"></div>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="img-vilao/quadrinhos1.jpg" alt="Noxar - O Despertar" class="gallery-img">
-        <div class="gallery-caption">A Chegada</div>
+    <div class="powers-container">
+      <div class="power-visualization">
+        <div class="power-orb">
+          <div class="orb-core"></div>
+          <div class="orb-ring"></div>
+          <div class="orb-light"></div>
+        </div>
+        <div class="power-selector">
+          <button class="power-option active" data-power="strength">
+            <i class="fas fa-fist-raised"></i>
+          </button>
+          <button class="power-option" data-power="speed">
+            <i class="fas fa-running"></i>
+          </button>
+          <button class="power-option" data-power="wisdom">
+            <i class="fas fa-brain"></i>
+          </button>
+          <button class="power-option" data-power="shield">
+            <i class="fas fa-shield-alt"></i>
+          </button>
+        </div>
       </div>
-      <div class="gallery-item">
-        <img src="img-vilao/quadrinhos2.jpg" alt="Noxar - O Exército das Sombras" class="gallery-img">
-        <div class="gallery-caption">O início do Fim</div>
+      <div class="power-details">
+        <div class="power-meter active" data-power="strength">
+          <div class="power-info">
+            <div class="power-icon"><i class="fas fa-fist-raised"></i></div>
+            <div class="power-name">Força Abissal</div>
+          </div>
+          <div class="power-bar">
+            <div class="power-fill" data-level="95"></div>
+            <div class="power-level">95%</div>
+          </div>
+          <div class="power-description">
+            <p>A força de Noxar é alimentada diretamente pelo vazio. Durante a noite, sob um céu sem estrelas, sua força atinge o ápice, permitindo-lhe destruir estruturas monumentais com um golpe.</p>
+          </div>
+        </div>
+        <div class="power-meter" data-power="speed">
+          <div class="power-info">
+            <div class="power-icon"><i class="fas fa-running"></i></div>
+            <div class="power-name">Velocidade das Trevas</div>
+          </div>
+          <div class="power-bar">
+            <div class="power-fill" data-level="90"></div>
+            <div class="power-level">90%</div>
+          </div>
+          <div class="power-description">
+            <p>Noxar pode se mover em velocidades que desafiam as leis da física, permitindo-lhe atravessar continentes em segundos e até mesmo viajar pelo vazio entre as dimensões.</p>
+          </div>
+        </div>
+        <div class="power-meter" data-power="wisdom">
+          <div class="power-info">
+            <div class="power-icon"><i class="fas fa-brain"></i></div>
+            <div class="power-name">Sabedoria Corrompida</div>
+          </div>
+          <div class="power-bar">
+            <div class="power-fill" data-level="85"></div>
+            <div class="power-level">85%</div>
+          </div>
+          <div class="power-description">
+            <p>O conhecimento acumulado de milênios de observação do vazio está disponível para Noxar, concedendo-lhe insights sobre as fraquezas de praticamente qualquer ser.</p>
+          </div>
+        </div>
+        <div class="power-meter" data-power="shield">
+          <div class="power-info">
+            <div class="power-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="power-name">Escudo das Trevas</div>
+          </div>
+          <div class="power-bar">
+            <div class="power-fill" data-level="100"></div>
+            <div class="power-level">100%</div>
+          </div>
+          <div class="power-description">
+            <p>Nenhuma força conhecida pode penetrar o escudo de energia sombria de Noxar quando em sua capacidade máxima, tornando-o virtualmente invulnerável à luz.</p>
+          </div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <img src="img-vilao/quadrinhos3.jpg" alt="Noxar - O Juízo Final" class="gallery-img">
-        <div class="gallery-caption">O Juízo</div>
-      </div>
-    </div>
-    <div class="gallery-controls">
-      <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
-      <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
     </div>
   </section>
 
+  <!-- Seção de Galeria Interativa -->
+  <section id="gallery" class="gallery-section">
+    <div class="section-header" data-aos="fade-up">
+      <h2>O Pesadelo</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="gallery-container">
+      <div class="gallery-viewport">
+        <div class="gallery-slider">
+          <div class="gallery-track">
+            <div class="gallery-slide" data-aos="zoom-in">
+              <img src="img-vilao/quadrinhos1.jpg" alt="Noxar - O Despertar" class="gallery-img">
+              <div class="slide-caption">
+                <h3>O Despertar</h3>
+                <p>O momento em que Alaric se torna Noxar</p>
+                <button class="slide-button">Ver Detalhes</button>
+              </div>
+              <div class="slide-overlay"></div>
+            </div>
+            <div class="gallery-slide" data-aos="zoom-in" data-aos-delay="100">
+              <img src="img-vilao/quadrinhos2.jpg" alt="Noxar - O Exército das Sombras" class="gallery-img">
+              <div class="slide-caption">
+                <h3>O Exército das Sombras</h3>
+                <p>Noxar convocando suas legiões das trevas</p>
+                <button class="slide-button">Ver Detalhes</button>
+              </div>
+              <div class="slide-overlay"></div>
+            </div>
+            <div class="gallery-slide" data-aos="zoom-in" data-aos-delay="200">
+              <img src="img-vilao/quadrinhos3.jpg" alt="Noxar - O Juízo Final" class="gallery-img">
+              <div class="slide-caption">
+                <h3>O Juízo Final</h3>
+                <p>A batalha que decidiu o destino do mundo</p>
+                <button class="slide-button">Ver Detalhes</button>
+              </div>
+              <div class="slide-overlay"></div>
+            </div>
+            <div class="gallery-slide" data-aos="zoom-in" data-aos-delay="300">
+              <img src="img-vilao/quadrinhos4.jpg" alt="Noxar - A Coroação" class="gallery-img">
+              <div class="slide-caption">
+                <h3>A Coroação</h3>
+                <p>Tornando-se o Senhor das Trevas</p>
+                <button class="slide-button">Ver Detalhes</button>
+              </div>
+              <div class="slide-overlay"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="gallery-dots"></div>
+        <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Citação com Efeito de Voz -->
   <section class="quote-section">
-    <div class="quote-container">
-      <blockquote class="quote-text">
-        "Quando tudo cair, quando não restar pedra sobre pedra, quando os últimos gritos se calarem... eu ainda estarei de pé. Inabalável. Noxar."
-      </blockquote>
-      <cite class="quote-author">- Noxar</cite>
+  <div class="quote-container" data-aos="fade-up">
+    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+    <div class="quote-audio">
+      <button class="audio-button">
+        <i class="fas fa-play"></i>
+      </button>
+      <div class="audio-wave">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <audio id="quote-audio" src="audio/Áudio-vilão.mp3"></audio>
+    </div>
+    <blockquote class="quote-text">
+      "A luz que vocês tanto idolatram será engolida pela minha escuridão, e eu me deleitarei com o desespero que restar."
+    </blockquote>
+    <cite class="quote-author">- Noxar, Sombra Implacável</cite>
+    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+  </div>
+</section>
+
+
+  <!-- Seção de Newsletter com Efeito de Holograma Sombrio -->
+  <section class="newsletter-section">
+    <div class="newsletter-hologram"></div>
+    <div class="newsletter-container" data-aos="fade-up">
+      <div class="newsletter-text">
+        <h3>Junte-se às Trevas</h3>
+        <p>Receba atualizações exclusivas sobre Noxar e seja notificado sobre novos conteúdos.</p>
+        <div class="newsletter-benefits">
+          <div class="benefit-item">
+            <i class="fas fa-gift"></i>
+            <span>Conteúdo exclusivo</span>
+          </div>
+          <div class="benefit-item">
+            <i class="fas fa-earlybirds"></i>
+            <span>Acesso antecipado</span>
+          </div>
+          <div class="benefit-item">
+            <i class="fas fa-skull"></i>
+            <span>Presentes sombrios</span>
+          </div>
+        </div>
+      </div>
+      <form class="newsletter-form">
+        <div class="form-group">
+          <div class="input-field">
+            <input type="email" placeholder="Seu melhor e-mail" required>
+            <i class="fas fa-envelope"></i>
+          </div>
+          <button type="submit">
+            <span class="btn-shine"></span>
+            <span class="btn-text">Assinar</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <div class="form-agree">
+          <label class="checkbox-container">
+            <input type="checkbox" required>
+            <span class="checkmark"></span>
+            <span>Concordo em receber comunicações</span>
+          </label>
+        </div>
+      </form>
     </div>
   </section>
 
+  <!-- Rodapé com Efeito de Energia Sombria -->
   <footer>
+    <div class="footer-energy"></div>
     <div class="footer-content">
-      <div class="footer-logo">SOMBRA IMPLACÁVEL</div>
-      <div class="footer-social">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-discord"></i></a>
+      <div class="footer-main">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <div class="logo-orb"></div>
+            <span>NOXAR</span>
+          </div>
+          <p>A escuridão que consome tudo. Uma criação de Inabalável Studios.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+              <span class="social-tooltip">Instagram</span>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+              <span class="social-tooltip">YouTube</span>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+              <span class="social-tooltip">Twitter</span>
+            </a>
+            <a href="#" aria-label="Discord">
+              <i class="fab fa-discord"></i>
+              <span class="social-tooltip">Discord</span>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Explorar</h4>
+            <ul>
+              <li><a href="#about"><span class="link-underline"></span>A Queda</a></li>
+              <li><a href="#character"><span class="link-underline"></span>O Vilão</a></li>
+              <li><a href="#powers"><span class="link-underline"></span>Poderes</a></li>
+              <li><a href="#gallery"><span class="link-underline"></span>Galeria</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <h4>Recursos</h4>
+            <ul>
+              <li><a href="#"><span class="link-underline"></span>Wallpapers</a></li>
+              <li><a href="#"><span class="link-underline"></span>Trilha Sonora</a></li>
+              <li><a href="#"><span class="link-underline"></span>Quadrinhos</a></li>
+              <li><a href="#"><span class="link-underline"></span>Cosplay Guide</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#"><span class="link-underline"></span>Termos de Uso</a></li>
+              <li><a href="#"><span class="link-underline"></span>Política de Privacidade</a></li>
+              <li><a href="#"><span class="link-underline"></span>Cookies</a></li>
+              <li><a href="#"><span class="link-underline"></span>DMCA</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="footer-newsletter">
-        <p>Quer se juntar o abismo?</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Seu e-mail" required>
-          <button type="submit">Assinar <i class="fas fa-arrow-right"></i></button>
-        </form>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 Inabalável - Todos os direitos fictícios reservados.</p>
-      <div class="footer-links">
-        <a href="#">Termos</a>
-        <a href="#">Privacidade</a>
-        <a href="#">Contato</a>
+      <div class="footer-bottom">
+        <p>© 2025 Inabalável Studios. Todos os direitos reservados.</p>
+        <div class="footer-credits">
+          <span>Desenvolvido com <i class="fas fa-heart"></i> e trevas</span>
+        </div>
       </div>
     </div>
 
@@ -225,13 +669,16 @@ Chamam-no de monstro. De lenda. Mas ele não é mito. É a consequência de um �
       <a href="heroi.html" class="switch-btn">
         <span>Ir para a Luz</span>
         <i class="fas fa-sun"></i>
+        <div class="switch-glow"></div>
       </a>
     </div>
   </footer>
 
-  <div class="cursor-follower"></div>
-
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="vilao.js"></script>
 </body>
 </html>

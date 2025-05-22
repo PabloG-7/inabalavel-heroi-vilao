@@ -7,212 +7,660 @@
   <title>Guardião Celestial | Inabalável</title>
   <link rel="stylesheet" href="heroi.css" />
   <link rel="shortcut icon" href="img-heroi/trovao-azul.png" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Nova fonte para títulos -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Cursor Personalizado 3D -->
+  <div class="custom-cursor">
+    <div class="cursor-core"></div>
+    <div class="cursor-aura"></div>
+  </div>
+  
+  <!-- Tela de Carregamento Imersiva -->
   <div class="loading-screen">
-    <div class="loader"></div>
-    <p class="loading-text">Carregando a luz...</p>
-    <div class="progress-bar">
-      <div class="progress"></div>
+    <div class="starry-background"></div>
+    <div class="loader-container">
+      <div class="quantum-loader">
+        <div class="quantum-dot"></div>
+        <div class="quantum-ring"></div>
+      </div>
+      <p class="loading-text">Inicializando sistemas celestiais...</p>
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+          <div class="progress-pulse"></div>
+        </div>
+        <span class="progress-percent">0%</span>
+      </div>
+      <div class="loading-hint">
+        <span>Dica: O Guardião Celestial obtém seus poderes diretamente das estrelas</span>
+      </div>
     </div>
   </div>
 
-  <div class="particles-js" id="particles-js"></div>
-
-  <header class="hero" id="trailer">
-    <div class="trailer-container">
-      <div class="trailer-overlay">
-        <h2 class="trailer-title">A LUZ SE LEVANTA</h2>
-        <p class="trailer-subtitle">Assista ao trailer da esperança</p>
-        <div class="trailer-stats">
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Classificação Heroica</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">12+</div>
-            <div class="stat-label">Inspiração Pura</div>
-          </div>
-        </div>
-      </div>
-      
-     <div class="video-container" id="videoContainer">
-        <video class="trailer" id="heroTrailer">
-          <source src="video-heroi/trailer-heroi.mp4" type="video/mp4">
-          Seu navegador não suporta vídeo HTML5.
-        </video>
-        <div class="play-button" id="playButton">
-          <i class="fas fa-play"></i>
-        </div>
-      </div> 
-    
-    <div class="scroll-down">
-      <i class="fas fa-chevron-down"></i>
-      <span>Desça para a jornada</span>
-    </div>
-  </header>
+  <!-- Efeito de Partículas Estelares -->
+  <div id="particles-js"></div>
   
+  <!-- Menu de Navegação Holográfico -->
   <nav class="main-nav">
     <div class="nav-container">
-      <a href="#" class="logo">INABALÁVEL</a>
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <div class="logo-orb"></div>
+          <i class="fas fa-star"></i>
+        </div>
+        <span class="logo-text">INABALÁVEL</span>
+      </a>
       <div class="nav-toggle">
         <span></span>
         <span></span>
         <span></span>
       </div>
       <ul class="nav-menu">
-        <li><a href="#about">A Missão</a></li>
-        <li><a href="#character">O Herói</a></li>
-        <li><a href="#gallery">A Lenda</a></li>
-        <li><a href="#trailer">Trailer</a></li>
+        <li><a href="#about" data-text="A Missão"><span class="nav-glow"></span>A Missão</a></li>
+        <li><a href="#character" data-text="O Herói"><span class="nav-glow"></span>O Herói</a></li>
+        <li><a href="#powers" data-text="Poderes"><span class="nav-glow"></span>Poderes</a></li>
+        <li><a href="#gallery" data-text="A Lenda"><span class="nav-glow"></span>A Lenda</a></li>
+        <li><a href="#trailer" data-text="Trailer"><span class="nav-glow"></span>Trailer</a></li>
       </ul>
     </div>
+    <div class="nav-aura"></div>
   </nav>
 
+  <!-- Seção Hero com Vídeo de Fundo -->
+  <header class="hero" id="trailer">
+    <div class="hero-video">
+      <video autoplay muted loop playsinline>
+        <source src="video-heroi/cosmic-background.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text" data-aos="fade-up" data-aos-delay="300">
+        <div class="title-container">
+          <h1 class="hero-title">
+            <span class="title-line">GUARDIÃO</span>
+            <span class="title-line">CELESTIAL</span>
+          </h1>
+          <div class="title-sparkle"></div>
+        </div>
+        <p class="hero-subtitle">Quando as trevas caírem, a luz se levantará</p>
+        <div class="hero-cta">
+          <button class="cta-button pulse">
+            <span class="btn-shine"></span>
+            <span class="btn-text">Assista ao Trailer</span>
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+      </div>
+      <div class="hero-character">
+        <img src="img-heroi/orion-3d.png" data-aos="fade-up" data-aos-delay="300" alt="Guardião Celestial" class="character-3d">
+        <div class="character-light"></div>
+      </div>
+    </div>
+    
+    <div class="scroll-down">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <span>Desça para a jornada</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- Modal do Trailer Holográfico -->
+  <div class="trailer-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-hologram"></div>
+      <button class="modal-close"><i class="fas fa-times"></i></button>
+      <div class="video-container">
+        <video id="heroTrailer" controls>
+          <source src="video-heroi/trailer-heroi.mp4" type="video/mp4">
+          Seu navegador não suporta vídeo HTML5.
+        </video>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action">
+          <i class="fas fa-share-alt"></i> Compartilhar
+        </button>
+        <button class="modal-action">
+          <i class="fas fa-download"></i> Download
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção de Título com Efeito de Constelação -->
   <section class="title-section">
-    <div class="light-rays"></div>
-    <h1 class="title-shining animate__animated animate__fadeIn">GUARDIÃO CELESTIAL</h1>
+    <div class="constellation">
+      <div class="star" style="top: 15%; left: 20%;"></div>
+      <div class="star" style="top: 25%; left: 70%;"></div>
+      <div class="star" style="top: 60%; left: 30%;"></div>
+      <div class="star" style="top: 80%; left: 80%;"></div>
+      <div class="star" style="top: 40%; left: 50%;"></div>
+      <div class="connecting-line" style="width: 30%; top: 20%; left: 20%; transform: rotate(45deg);"></div>
+      <div class="connecting-line" style="width: 25%; top: 65%; left: 30%; transform: rotate(-20deg);"></div>
+    </div>
+    <div class="title-container" data-aos="zoom-in">
+      <div class="title-badge">
+        <div class="badge-ornament"></div>
+        <h1 class="title-shining">A ERA DO PROTETOR</h1>
+        <div class="badge-ornament"></div>
+      </div>
+      <div class="title-divider">
+        <div class="divider-orb"></div>
+      </div>
+      <p class="title-description">Quando o mundo mais precisou, as estrelas enviaram seu campeão</p>
+    </div>
   </section>
 
+  <!-- Seção Sobre com Efeito de Galáxia -->
   <section id="about" class="intro">
-    <div class="section-header">
+    <div class="galaxy-bg"></div>
+    <div class="section-header" data-aos="fade-up">
       <h2>A Missão Sagrada</h2>
       <div class="section-divider"></div>
     </div>
-    <p class="animate__animated animate__fadeInUp">
-      Nascido das estrelas e forjado na luz, ele é o escudo contra as trevas, a esperança em meio ao caos, o farol que guia os perdidos. Ele é... o Guardião Celestial.
-<br><br>
-Enquanto mil cidades clamavam por ajuda e sete reinos estavam à beira da destruição, os deuses enviaram seu campeão. Uma presença radiante caminhou entre as ruínas, trazendo esperança onde havia apenas desespero - um lembrete de que a luz sempre vence.
-<br><br>
-Chamam-no de salvador. De mito. Mas ele é real. É a encarnação de um único princípio: 1 Verdade.
-    </p>
-    <p class="highlight-text animate__animated animate__fadeInUp">
-      Quando as trevas ameaçavam engolir o mundo e os fracos perderam a esperança,  
-      ele surgiu. Não pediu gratidão. Não buscou glória.  
-      Caminhou entre os necessitados como o farol que o mundo tanto precisava.
-    </p>
-    <p class="animate__animated animate__fadeInUp">
-      Chamam de herói. De lenda. Mas ele é mais que isso. Ele é a esperança.
-    </p>
-    <div class="world-stats">
-      <div class="stat-item">
-        <div class="stat-number" data-count="1000">0</div>
-        <div class="stat-label">Vidas Salvas</div>
+    <div class="intro-content">
+      <div class="intro-text" data-aos="fade-right">
+        <p class="reveal-text">
+          Nascido das estrelas e forjado na luz, ele é o escudo contra as trevas, a esperança em meio ao caos, o farol que guia os perdidos. Ele é... o Guardião Celestial.
+        </p>
+        <p class="reveal-text">
+          Enquanto mil cidades clamavam por ajuda e sete reinos estavam à beira da destruição, os deuses enviaram seu campeão. Uma presença radiante caminhou entre as ruínas, trazendo esperança onde havia apenas desespero - um lembrete de que a luz sempre vence.
+        </p>
       </div>
-      <div class="stat-item">
-        <div class="stat-number" data-count="7">0</div>
-        <div class="stat-label">Reinos Protegidos</div>
+      <div class="intro-highlight" data-aos="fade-left">
+        <div class="highlight-content">
+          <div class="quote-marks">
+            <i class="fas fa-quote-left"></i>
+            <i class="fas fa-quote-right"></i>
+          </div>
+          <p class="typewriter">"Quando as trevas ameaçavam engolir o mundo e os fracos perderam a esperança, ele surgiu. Não pediu gratidão. Não buscou glória. Caminhou entre os necessitados como o farol que o mundo tanto precisava."</p>
+          <div class="highlight-author">
+            <div class="author-avatar"></div>
+            <span>Crônicas Celestiais</span>
+          </div>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number" data-count="1">0</div>
-        <div class="stat-label">Verdade</div>
+      <div class="intro-stats" data-aos="fade-up">
+        <div class="world-stats">
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-city"></i>
+              <div class="stat-pulse"></div>
+            </div>
+            <div class="stat-number" data-count="1000">0</div>
+            <div class="stat-label">Vidas Salvas</div>
+            <div class="stat-underline"></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-landmark"></i>
+              <div class="stat-pulse"></div>
+            </div>
+            <div class="stat-number" data-count="7">0</div>
+            <div class="stat-label">Reinos Protegidos</div>
+            <div class="stat-underline"></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-star"></i>
+              <div class="stat-pulse"></div>
+            </div>
+            <div class="stat-number" data-count="1">0</div>
+            <div class="stat-label">Verdade</div>
+            <div class="stat-underline"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Seção do Personagem com Modelo 3D -->
   <section id="character" class="character">
-    <div class="section-header">
+    <div class="section-header" data-aos="fade-up">
       <h2>O Herói</h2>
       <div class="section-divider"></div>
     </div>
     <div class="character-container">
-      <div class="character-img-container">
-        <img src="img-heroi/ft-heroi.jpg" alt="Herói Celestial" class="character-img"/>
-        <div class="character-overlay">
-          <h3>ORION</h3>
+      <div class="character-img-container" data-aos="fade-right">
+        <div class="character-img-wrapper">
+          <img src="img-heroi/ft-heroi.jpg" alt="Herói Celestial" class="character-img"/>
+          <div class="character-badge">
+            <span>ORION</span>
+            <div class="badge-spark"></div>
+          </div>
+          <div class="character-hover-info">
+            <h3>Orion - O Guardião</h3>
+            <p>Nível de Poder: <span>★★★★★</span></p>
+            <div class="character-tags">
+              <span>Luminoso</span>
+              <span>Protetor</span>
+              <span>Celestial</span>
+            </div>
+          </div>
+        </div>
+        <div class="character-quote">
           <p>"A luz sempre encontrará um caminho..."</p>
+          <div class="quote-signature">
+            <div class="signature-line"></div>
+            <span>Orion</span>
+            <div class="signature-line"></div>
+          </div>
         </div>
       </div>
-      <div class="character-description">
-        <h3>ORION</h3>
-        <p>Um guerreiro celestial enviado pelos deuses para proteger os inocentes e manter o equilíbrio entre luz e trevas. Seu nome vem da constelação que o guia, e seu coração pulsa com a energia das estrelas.</p>
-        <ul class="character-traits">
-          <li><span>Origem:</span> Antes de se tornar Orion, ele era um simples mortal chamado Elias, um astrônomo que dedicou sua vida a estudar as estrelas. Quando uma antiga profecia se cumpriu e as trevas ameaçaram engolir o mundo, as constelações se uniram e o escolheram como seu campeão. O <strong style="color: #00a8ff;">Núcleo Estelar</strong>, um artefato de pura energia celestial, se fundiu a ele, concedendo-lhe poderes além da compreensão mortal.</li>
-          <li><span>Objetivo:</span> Proteger os inocentes, manter o equilíbrio cósmico e inspirar esperança mesmo nos momentos mais sombrios.</li>
-          <li><span>Poder:</span> Força Celestial — Voo — Manipulação de Energia — Visão Estelar — Cura Divina.</li>
-        </ul>
-        <div class="power-levels">
-          <div class="power-meter">
-            <div class="power-label">Força</div>
-            <div class="power-bar"><span class="power-fill" data-width="90%"></span></div>
+      <div class="character-description" data-aos="fade-left">
+        <div class="character-tabs">
+          <button class="tab-button active" data-tab="origin">
+            <i class="fas fa-atom"></i>
+            <span>Origem</span>
+          </button>
+          <button class="tab-button" data-tab="mission">
+            <i class="fas fa-bullseye"></i>
+            <span>Missão</span>
+          </button>
+          <button class="tab-button" data-tab="abilities">
+            <i class="fas fa-bolt"></i>
+            <span>Habilidades</span>
+          </button>
+        </div>
+        <div class="tab-content active" id="origin">
+          <p>Antes de se tornar Orion, ele era um simples mortal chamado Elias, um astrônomo que dedicou sua vida a estudar as estrelas. Quando uma antiga profecia se cumpriu e as trevas ameaçaram engolir o mundo, as constelações se uniram e o escolheram como seu campeão.</p>
+          <p>O <strong>Núcleo Estelar</strong>, um artefato de pura energia celestial, se fundiu a ele, concedendo-lhe poderes além da compreensão mortal. Agora, como Orion, ele é a encarnação viva da luz das estrelas.</p>
+          <div class="origin-timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4>Nascimento de Elias</h4>
+                <p>Em uma pequena vila sob a constelação de Orion</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4>Descoberta do Núcleo Estelar</h4>
+                <p>Durante uma expedição astronômica</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4>Transformação</h4>
+                <p>A fusão com o Núcleo Estelar</p>
+              </div>
+            </div>
           </div>
-          <div class="power-meter">
-            <div class="power-label">Velocidade</div>
-            <div class="power-bar"><span class="power-fill" data-width="95%"></span></div>
+        </div>
+        <div class="tab-content" id="mission">
+          <p>Orion foi enviado com um propósito claro: proteger os inocentes e manter o equilíbrio cósmico entre luz e trevas. Sua missão vai além de simplesmente combater o mal - ele é um símbolo de esperança para todos os seres.</p>
+          <p>Em um universo onde o equilíbrio é frágil, Orion serve como guardião, garantindo que a luz nunca seja completamente extinta, mesmo nos momentos mais sombrios.</p>
+          <div class="mission-map">
+            <div class="map-point" style="top: 30%; left: 20%;">
+              <div class="point-marker"></div>
+              <div class="point-info">Cidade das Luzes</div>
+            </div>
+            <div class="map-point" style="top: 60%; left: 70%;">
+              <div class="point-marker"></div>
+              <div class="point-info">Templo Celestial</div>
+            </div>
+            <div class="map-point" style="top: 45%; left: 50%;">
+              <div class="point-marker"></div>
+              <div class="point-info">Torre de Orion</div>
+            </div>
           </div>
-          <div class="power-meter">
-            <div class="power-label">Sabedoria</div>
-            <div class="power-bar"><span class="power-fill" data-width="85%"></span></div>
+        </div>
+        <div class="tab-content" id="abilities">
+          <p>Como avatar das estrelas, Orion possui habilidades extraordinárias:</p>
+          <ul class="abilities-list">
+            <li>
+              <div class="ability-icon">
+                <i class="fas fa-fist-raised"></i>
+              </div>
+              <div class="ability-info">
+                <h4>Força Celestial</h4>
+                <p>Poder físico amplificado pela energia estelar</p>
+                <div class="ability-meter">
+                  <div class="meter-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="ability-icon">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="ability-info">
+                <h4>Voo Cósmico</h4>
+                <p>Capacidade de navegar pelos céus e pelo espaço</p>
+                <div class="ability-meter">
+                  <div class="meter-fill" style="width: 95%;"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="ability-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="ability-info">
+                <h4>Manipulação de Energia</h4>
+                <p>Controle sobre a luz estelar</p>
+                <div class="ability-meter">
+                  <div class="meter-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="ability-icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <div class="ability-info">
+                <h4>Visão Estelar</h4>
+                <p>Percepção além do espectro visível</p>
+                <div class="ability-meter">
+                  <div class="meter-fill" style="width: 80%;"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="ability-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <div class="ability-info">
+                <h4>Cura Divina</h4>
+                <p>Capacidade de regenerar tecidos vivos</p>
+                <div class="ability-meter">
+                  <div class="meter-fill" style="width: 75%;"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Poderes com Visualização 3D -->
+  <section id="powers" class="powers-section">
+    <div class="section-header" data-aos="fade-up">
+      <h2>Poderes Celestiais</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="powers-container">
+      <div class="power-visualization">
+        <div class="power-orb">
+          <div class="orb-core"></div>
+          <div class="orb-ring"></div>
+          <div class="orb-light"></div>
+        </div>
+        <div class="power-selector">
+          <button class="power-option active" data-power="strength">
+            <i class="fas fa-fist-raised"></i>
+          </button>
+          <button class="power-option" data-power="speed">
+            <i class="fas fa-running"></i>
+          </button>
+          <button class="power-option" data-power="wisdom">
+            <i class="fas fa-brain"></i>
+          </button>
+          <button class="power-option" data-power="shield">
+            <i class="fas fa-shield-alt"></i>
+          </button>
+        </div>
+      </div>
+      <div class="power-details">
+        <div class="power-meter active" data-power="strength">
+          <div class="power-info">
+            <div class="power-icon"><i class="fas fa-fist-raised"></i></div>
+            <div class="power-name">Força Estelar</div>
           </div>
-          <div class="power-meter">
-            <div class="power-label">Proteção</div>
-            <div class="power-bar"><span class="power-fill" data-width="100%"></span></div>
+          <div class="power-bar">
+            <div class="power-fill" data-level="90"></div>
+            <div class="power-level">90%</div>
+          </div>
+          <div class="power-description">
+            <p>A força de Orion é alimentada diretamente pelas estrelas. Durante a noite, sob um céu estrelado, sua força atinge o ápice, permitindo-lhe levantar estruturas monumentais.</p>
+          </div>
+        </div>
+        <div class="power-meter" data-power="speed">
+          <div class="power-info">
+            <div class="power-icon"><i class="fas fa-running"></i></div>
+            <div class="power-name">Velocidade Cósmica</div>
+          </div>
+          <div class="power-bar">
+            <div class="power-fill" data-level="95"></div>
+            <div class="power-level">95%</div>
+          </div>
+          <div class="power-description">
+            <p>Orion pode se mover em velocidades que desafiam as leis da física, permitindo-lhe atravessar continentes em segundos e até mesmo viajar pelo espaço.</p>
+          </div>
+        </div>
+        <div class="power-meter" data-power="wisdom">
+          <div class="power-info">
+            <div class="power-icon"><i class="fas fa-brain"></i></div>
+            <div class="power-name">Sabedoria Infinita</div>
+          </div>
+          <div class="power-bar">
+            <div class="power-fill" data-level="85"></div>
+            <div class="power-level">85%</div>
+          </div>
+          <div class="power-description">
+            <p>O conhecimento acumulado de milênios de observação estelar está disponível para Orion, concedendo-lhe insights sobre praticamente qualquer assunto.</p>
+          </div>
+        </div>
+        <div class="power-meter" data-power="shield">
+          <div class="power-info">
+            <div class="power-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="power-name">Escudo Celestial</div>
+          </div>
+          <div class="power-bar">
+            <div class="power-fill" data-level="100"></div>
+            <div class="power-level">100%</div>
+          </div>
+          <div class="power-description">
+            <p>Nenhuma força conhecida pode penetrar o escudo de energia estelar de Orion quando em sua capacidade máxima, tornando-o virtualmente invulnerável.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Seção de Galeria Interativa -->
   <section id="gallery" class="gallery-section">
-    <div class="section-header">
+    <div class="section-header" data-aos="fade-up">
       <h2>A Lenda</h2>
       <div class="section-divider"></div>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="img-heroi/quadrinhos4.jpg" alt="Guardião Celestial - O Chamado" class="gallery-img">
-        <div class="gallery-caption">O Chamado</div>
+    <div class="gallery-container">
+      <div class="gallery-viewport">
+        <div class="gallery-slider">
+          <div class="gallery-track">
+            <div class="gallery-slide" data-aos="zoom-in">
+              <img src="img-heroi/quadrinhos4.jpg" alt="Guardião Celestial - O Chamado" class="gallery-img">
+              <div class="slide-caption">
+                <h3>O Chamado</h3>
+                <p>O momento em que Elias recebe o chamado das estrelas</p>
+                <button class="slide-button">Ver Detalhes</button>
+              </div>
+              <div class="slide-overlay"></div>
+            </div>
+            <div class="gallery-slide" data-aos="zoom-in" data-aos-delay="100">
+              <img src="img-heroi/quadrinhos5.jpg" alt="Guardião Celestial - O Voo" class="gallery-img">
+              <div class="slide-caption">
+                <h3>O Primeiro Voo</h3>
+                <p>Descobrindo o poder do voo celestial</p>
+                <button class="slide-button">Ver Detalhes</button>
+              </div>
+              <div class="slide-overlay"></div>
+            </div>
+            <div class="gallery-slide" data-aos="zoom-in" data-aos-delay="200">
+              <img src="img-heroi/quadrinhos6.jpg" alt="Guardião Celestial - O Confronto" class="gallery-img">
+              <div class="slide-caption">
+                <h3>O Confronto Final</h3>
+                <p>A batalha que decidiu o destino do mundo</p>
+                <button class="slide-button">Ver Detalhes</button>
+              </div>
+              <div class="slide-overlay"></div>
+            </div>
+            <div class="gallery-slide" data-aos="zoom-in" data-aos-delay="300">
+              <img src="img-heroi/orion-coroado.jpg" alt="Guardião Celestial - A Ascensão" class="gallery-img">
+              <div class="slide-caption">
+                <h3>A Ascensão</h3>
+                <p>Tornando-se o Guardião Celestial</p>
+                <button class="slide-button">Ver Detalhes</button>
+              </div>
+              <div class="slide-overlay"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <img src="img-heroi/quadrinhos5.jpg" alt="Guardião Celestial - O Voo" class="gallery-img">
-        <div class="gallery-caption">O Voo</div>
+      <div class="gallery-controls">
+        <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="gallery-dots"></div>
+        <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
       </div>
-      <div class="gallery-item">
-        <img src="img-heroi/quadrinhos6.jpg" alt="Guardião Celestial - O Confronto" class="gallery-img">
-        <div class="gallery-caption">O Confronto</div>
-      </div>
-    </div>
-    <div class="gallery-controls">
-      <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
-      <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
     </div>
   </section>
 
+  <!-- Seção de Citação com Efeito de Voz -->
   <section class="quote-section">
-    <div class="quote-container">
+    <div class="quote-container" data-aos="fade-up">
+      <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+      <div class="quote-audio">
+        <button class="audio-button">
+          <i class="fas fa-play"></i>
+        </button>
+        <div class="audio-wave">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
       <blockquote class="quote-text">
         "Quando a escuridão parecer invencível, quando todos perderem a esperança, lembre-se - a luz sempre encontrará um caminho. Eu sou a prova disso."
       </blockquote>
-      <cite class="quote-author">- Orion</cite>
+      <cite class="quote-author">- Orion, Guardião Celestial</cite>
+      <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
     </div>
   </section>
 
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">GUARDIÃO CELESTIAL</div>
-      <div class="footer-social">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-discord"></i></a>
+  <!-- Seção de Newsletter com Efeito de Holograma -->
+  <section class="newsletter-section">
+    <div class="newsletter-hologram"></div>
+    <div class="newsletter-container" data-aos="fade-up">
+      <div class="newsletter-text">
+        <h3>Junte-se à Luz</h3>
+        <p>Receba atualizações exclusivas sobre o Guardião Celestial e seja notificado sobre novos conteúdos.</p>
+        <div class="newsletter-benefits">
+          <div class="benefit-item">
+            <i class="fas fa-gift"></i>
+            <span>Conteúdo exclusivo</span>
+          </div>
+          <div class="benefit-item">
+            <i class="fas fa-earlybirds"></i>
+            <span>Acesso antecipado</span>
+          </div>
+          <div class="benefit-item">
+            <i class="fas fa-star"></i>
+            <span>Presentes especiais</span>
+          </div>
+        </div>
       </div>
-      <div class="footer-newsletter">
-        <p>Quer se juntar à luz?</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Seu e-mail" required>
-          <button type="submit">Assinar <i class="fas fa-arrow-right"></i></button>
-        </form>
-      </div>
+      <form class="newsletter-form">
+        <div class="form-group">
+          <div class="input-field">
+            <input type="email" placeholder="Seu melhor e-mail" required>
+            <i class="fas fa-envelope"></i>
+          </div>
+          <button type="submit">
+            <span class="btn-shine"></span>
+            <span class="btn-text">Assinar</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <div class="form-agree">
+          <label class="checkbox-container">
+            <input type="checkbox" required>
+            <span class="checkmark"></span>
+            <span>Concordo em receber comunicações</span>
+          </label>
+        </div>
+      </form>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 Inabalável - Todos os direitos fictícios reservados.</p>
-      <div class="footer-links">
-        <a href="#">Termos</a>
-        <a href="#">Privacidade</a>
-        <a href="#">Contato</a>
+  </section>
+
+  <!-- Rodapé com Efeito de Energia -->
+  <footer>
+    <div class="footer-energy"></div>
+    <div class="footer-content">
+      <div class="footer-main">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <div class="logo-orb"></div>
+            <span>GUARDIÃO CELESTIAL</span>
+          </div>
+          <p>O protetor da luz contra as trevas. Uma criação de Inabalável Studios.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+              <span class="social-tooltip">Instagram</span>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+              <span class="social-tooltip">YouTube</span>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+              <span class="social-tooltip">Twitter</span>
+            </a>
+            <a href="#" aria-label="Discord">
+              <i class="fab fa-discord"></i>
+              <span class="social-tooltip">Discord</span>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Explorar</h4>
+            <ul>
+              <li><a href="#about"><span class="link-underline"></span>A Missão</a></li>
+              <li><a href="#character"><span class="link-underline"></span>O Herói</a></li>
+              <li><a href="#powers"><span class="link-underline"></span>Poderes</a></li>
+              <li><a href="#gallery"><span class="link-underline"></span>Galeria</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <h4>Recursos</h4>
+            <ul>
+              <li><a href="#"><span class="link-underline"></span>Wallpapers</a></li>
+              <li><a href="#"><span class="link-underline"></span>Trilha Sonora</a></li>
+              <li><a href="#"><span class="link-underline"></span>Quadrinhos</a></li>
+              <li><a href="#"><span class="link-underline"></span>Cosplay Guide</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#"><span class="link-underline"></span>Termos de Uso</a></li>
+              <li><a href="#"><span class="link-underline"></span>Política de Privacidade</a></li>
+              <li><a href="#"><span class="link-underline"></span>Cookies</a></li>
+              <li><a href="#"><span class="link-underline"></span>DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Inabalável Studios. Todos os direitos reservados.</p>
+        <div class="footer-credits">
+          <span>Desenvolvido com <i class="fas fa-heart"></i> e luz estelar</span>
+        </div>
       </div>
     </div>
 
@@ -220,58 +668,17 @@ Chamam-no de salvador. De mito. Mas ele é real. É a encarnação de um único 
       <a href="vilao.html" class="switch-btn">
         <span>Ir para a Escuridão</span>
         <i class="fas fa-moon"></i>
+        <div class="switch-glow"></div>
       </a>
     </div>
   </footer>
 
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="heroi.js"></script>
 </body>
 </html>
-
-<script>
-  const videoContainer = document.getElementById('videoContainer');
-  const video = document.getElementById('heroTrailer');
-  const playButton = document.getElementById('playButton');
-  
-  // Função para alternar play/pause
-  function togglePlay() {
-    if (video.paused) {
-      video.play();
-      playButton.style.display = 'none';
-    } else {
-      video.pause();
-      playButton.style.display = 'flex';
-    }
-  }
-  
-  // Clicar em qualquer lugar do container
-  videoContainer.addEventListener('click', function() {
-    togglePlay();
-  });
-  
-  // Tecla espaço ou enter também funcionam
-  videoContainer.addEventListener('keypress', function(e) {
-    if (e.code === 'Space' || e.code === 'Enter') {
-      togglePlay();
-    }
-  });
-  
-  // Mostrar botão quando o vídeo pausar
-  video.addEventListener('pause', function() {
-    playButton.style.display = 'flex';
-  });
-  
-  // Esconder botão quando o vídeo começar
-  video.addEventListener('play', function() {
-    playButton.style.display = 'none';
-  });
-  
-  // Tela cheia ao dar play (opcional)
-  video.addEventListener('play', function() {
-    if (screenfull.isEnabled) {
-      screenfull.request(videoContainer);
-    }
-  });
-  </script>
