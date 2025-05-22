@@ -198,17 +198,17 @@ body {
 .character-image {
   width: 100%;
   height: 140px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: top;
+  background-repeat: repeat;
 }
 
 .hero-image {
-  background-image: url('../imagens/heroi-card.jpg');
+  background-image: url('heroi-vilao/img-heroi/quadrinhos6.jpg');
 }
 
 .villain-image {
-  background-image: url('../imagens/vilao-card.jpg');
+  background-image: url('heroi-vilao/img-vilao/quadrinhos3.jpg');
 }
 
 .card-overlay {
@@ -541,12 +541,16 @@ body {
   }
   
   .character-image {
-    height: 100px;
-  }
+  width: 100%;
+  height: 100px;
+  background-size: 140px;
+  background-position: top;
+  background-repeat: repeat;
+}
   
   .choice-btn {
     padding: 0.5rem 1rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     max-width: 180px;
   }
   
