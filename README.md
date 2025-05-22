@@ -1,4 +1,4 @@
-## Universo Inabalável - Guardião Celestial vs Noxar
+## Universo Inabalável - Guardião Celestial vs Sombra Implacável
 
   <img src="https://raw.githubusercontent.com/PabloG-7/inabalavel-heroi-vilao/refs/heads/main/inabalavel-apresentacao.png" alt="Banner do Projeto - Portal da Escolha"/>
 
