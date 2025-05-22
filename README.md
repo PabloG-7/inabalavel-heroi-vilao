@@ -1,6 +1,6 @@
 ## Universo Inabalável - Guardião Celestial vs Noxar
 
-[https://raw.githubusercontent.com/PabloG-7/inabalavel-heroi-vilao/refs/heads/main/inabalavel-apresentacao.png]
+<img[https://raw.githubusercontent.com/PabloG-7/inabalavel-heroi-vilao/refs/heads/main/inabalavel-apresentacao.png]<img/>
 
 O portal definitivo que antecede a grande batalha cósmica entre luz e trevas. Antes de mergulhar nos universos do Guardião Celestial e Noxar, você deve fazer sua escolha - de qual lado da força você está?
 
