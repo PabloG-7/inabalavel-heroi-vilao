@@ -112,14 +112,14 @@
     </div>
   </header>
 
-  <!-- Modal do Trailer Sombrio -->
+<!-- Modal do Trailer Holográfico -->
   <div class="trailer-modal">
     <div class="modal-overlay"></div>
     <div class="modal-content">
       <div class="modal-hologram"></div>
       <button class="modal-close"><i class="fas fa-times"></i></button>
       <div class="video-container">
-        <video id="vilaoTrailer" controls>
+        <video id="heroTrailer" controls>
           <source src="video-vilao/trailer-vilao.mp4" type="video/mp4">
           Seu navegador não suporta vídeo HTML5.
         </video>
@@ -159,13 +159,341 @@
     </div>
   </section>
 
-  <!-- Seção Sobre com Efeito de Abismo -->
-
-
-  <!-- Seção do Personagem com Modelo 3D -->
+ <!-- Seção Sobre com Efeito de Abismo -->
+<section id="about" class="about-section">
+  <div class="galaxy-effect">
+    <div class="galaxy-center"></div>
+    <div class="galaxy-arms">
+      <div class="arm"></div>
+      <div class="arm"></div>
+      <div class="arm"></div>
+      <div class="arm"></div>
+    </div>
+    <div class="galaxy-stars"></div>
+  </div>
   
+  <div class="section-header" data-aos="fade-up">
+    <h2>A Queda Invevitável</h2>
+    <div class="section-divider"></div>
+  </div>
+  
+  <div class="about-container">
+    <div class="about-content" data-aos="fade-right">
+      <div class="cosmic-badge">
+        <div class="badge-orb"></div>
+        <h3>Origem Vilão</h3>
+      </div>
+      <p>Noxar nasceu do vazio entre as estrelas, forjado na escuridão que precede a criação. Ele é a espada contra a luz, o caos em meio à ordem, o abismo que engole os perdidos.</p>
+      <p>Antes de se tornar Noxar, ele era Alaric, um poderoso guardião do reino de Elyria. Quando descobriu que a ordem que defendia era construída sobre mentiras, sua sanidade desmoronou. O Núcleo do Vazio, um artefato de energia sombria proibido, corrompeu sua essência, transformando-o no ser de pura destruição que é hoje.</p>
+      
+      <div class="mission-map">
+        <div class="map-point" style="top: 30%; left: 25%;" data-location="Nebulosa Orion">
+          <div class="point-pulse"></div>
+          <div class="point-tooltip">Fortaleza das Sombras - Local de Nascimento</div>
+        </div>
+        <div class="map-point" style="top: 60%; left: 70%;" data-location="Terra">
+          <div class="point-pulse"></div>
+          <div class="point-tooltip">Ruínas Proibidas - Local da Corrupção</div>
+        </div>
+        <div class="map-connection"></div>
+      </div>
+    </div>
+    
+    <div class="about-image" data-aos="fade-left">
+      <img src="img-vilao/noxar-foto.png" alt="Orion Constelação" class="cosmic-image">
+      <div class="image-glow"></div>
+    </div>
+  </div>
+  
+    <div class="world-stats">
+    <div class="stat-item" data-aos="zoom-in">
+      <div class="stat-icon"><i class="fas fa-city"></i></div>
+      <h3 class="stat-number" data-count="1000">0</h3>
+      <p>Vidas Consumidas</p>
+    </div>
+    <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+      <div class="stat-icon"><i class="fas fa-landmark"></i></div>
+      <h3 class="stat-number" data-count="7">0</h3>
+      <p>Reinos Destruídos</p>
+    </div>
+    <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+      <div class="stat-icon"><i class="fas fa-skull"></i></div>
+      <h3 class="stat-number" data-count="1">0</h3>
+      <p>Verdade Absoluta</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Seção de Poderes com Visualização 3D -->
+
+<!-- Seção do Personagem com Modelo 3D -->
+<section id="character" class="character-section">
+  <div class="section-header" data-aos="fade-up">
+    <h2>O Arauto das Trevas</h2>
+    <div class="section-divider"></div>
+  </div>
+  
+  <div class="character-container">
+    <div class="character-model" data-aos="fade-right">
+      <div class="model-container">
+        <img src="img-vilao/noxar-3d.png" alt="Modelo 3D de Noxar" class="model-3d">
+        <div class="model-lights">
+          <div class="light-core"></div>
+          <div class="light-aura"></div>
+        </div>
+      </div>
+      <div class="model-controls">
+        <button class="control-button rotate-x"><i class="fas fa-arrows-alt-v"></i></button>
+        <button class="control-button rotate-y"><i class="fas fa-arrows-alt-h"></i></button>
+        <button class="control-button zoom-in"><i class="fas fa-search-plus"></i></button>
+        <button class="control-button zoom-out"><i class="fas fa-search-minus"></i></button>
+      </div>
+    </div>
+    
+    <div class="character-description" data-aos="fade-left">
+      <div class="character-tabs">
+        <button class="tab-button active" data-tab="origins">Origens</button>
+        <button class="tab-button" data-tab="abilities">Habilidades</button>
+        <button class="tab-button" data-tab="equipment">Artefatos</button>
+      </div>
+      
+      <div class="tab-content active" id="origins">
+        <h3>Alaric: O Corrompido</h3>
+        <p>Antes de se tornar Noxar, Alaric era um nobre guardião que protegia o reino de Elyria. Sua queda começou quando descobriu que a ordem que defendia era baseada em mentiras. O Núcleo do Vazio encontrou nele o hospedeiro perfeito para sua energia sombria.</p>
+        
+        <div class="origin-timeline">
+          <div class="timeline-event">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Nascimento Sob a Constelação Sombria</h4>
+              <p>Alaric nasceu durante um eclipse raro que marcou seu destino sombrio.</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Descoberta do Núcleo do Vazio</h4>
+              <p>Durante uma expedição às ruínas proibidas, Alaric encontrou o artefato que mudaria tudo.</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>A Fusão</h4>
+              <p>O Núcleo do Vazio se fundiu a Alaric, transformando-o em Noxar, o Arauto das Trevas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="abilities">
+        <h3>Dons das Trevas</h3>
+        <p>Noxar possui habilidades concedidas pelo Vazio, canalizando energia sombria para corromper e destruir.</p>
+        <ul class="abilities-list">
+          <li><i class="fas fa-fist-raised"></i> Força Abissal - Poder físico amplificado pela energia sombria</li>
+          <li><i class="fas fa-running"></i> Velocidade das Trevas - Movimento através das sombras e vazio</li>
+          <li><i class="fas fa-shield-alt"></i> Escudo do Vazio - Barreira impenetrável de energia sombria</li>
+          <li><i class="fas fa-eye"></i> Visão Corrompida - Pode ver a verdade por trás das ilusões</li>
+          <li><i class="fas fa-heartbeat"></i> Drenagem Vital - Capacidade de absorver energia de seres vivos</li>
+        </ul>
+      </div>
+      
+      <div class="tab-content" id="equipment">
+        <h3>Artefatos do Vazio</h3>
+        <p>Noxar utiliza artefatos forjados nas profundezas do abismo e alimentados por energia sombria.</p>
+        
+        <div class="equipment-grid">
+          <div class="equipment-item">
+            <div class="equipment-icon"><i class="fas fa-gem"></i></div>
+            <h4>Núcleo do Vazio</h4>
+            <p>Fonte de todo seu poder, um fragmento do abismo primordial.</p>
+          </div>
+          <div class="equipment-item">
+            <div class="equipment-icon"><i class="fas fa-vest"></i></div>
+            <h4>Armadura das Sombras</h4>
+            <p>Proteção feita de escuridão solidificada, regenera-se automaticamente.</p>
+          </div>
+          <div class="equipment-item">
+            <div class="equipment-icon"><i class="fas fa-ring"></i></div>
+            <h4>Anel da Perdição</h4>
+            <p>Amplifica seus poderes de corrupção e controle mental.</p>
+          </div>
+          <div class="equipment-item">
+            <div class="equipment-icon"><i class="fas fa-mask"></i></div>
+            <h4>Véu da Noite Eterna</h4>
+            <p>Permite que se torne um com as sombras e invisível aos olhos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Seção de Poderes com Visualização 3D -->
+<section id="powers" class="powers-section">
+  <div class="section-header" data-aos="fade-up">
+    <h2>Poderes Sombrios</h2>
+    <div class="section-divider"></div>
+  </div>
+  
+  <div class="powers-container">
+    <div class="power-visualization" data-aos="fade-right">
+      <div class="power-orb">
+        <div class="orb-core"></div>
+        <div class="orb-rings">
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+        </div>
+        <div class="orb-particles"></div>
+      </div>
+      
+      <div class="power-options">
+        <button class="power-option active" data-power="strength">
+          <i class="fas fa-fist-raised"></i>
+          <span>Força Abissal</span>
+        </button>
+        <button class="power-option" data-power="speed">
+          <i class="fas fa-running"></i>
+          <span>Velocidade Sombria</span>
+        </button>
+        <button class="power-option" data-power="shield">
+          <i class="fas fa-shield-alt"></i>
+          <span>Escudo do Vazio</span>
+        </button>
+        <button class="power-option" data-power="corruption">
+          <i class="fas fa-heartbeat"></i>
+          <span>Corrupção</span>
+        </button>
+      </div>
+    </div>
+    
+    <div class="power-details" data-aos="fade-left">
+      <div class="power-meter active" data-power="strength">
+        <h3>Força Abissal</h3>
+        <p>Poder físico amplificado pela energia sombria do Vazio. Durante a noite ou em locais de escuridão, sua força atinge níveis cósmicos.</p>
+        
+        <div class="power-stats">
+          <div class="stat-item">
+            <span>Intensidade</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="95"></div>
+              <span class="power-level">95%</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span>Destruição</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="98"></div>
+              <span class="power-level">98%</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span>Resistência</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="90"></div>
+              <span class="power-level">90%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="power-meter" data-power="speed">
+        <h3>Velocidade Sombria</h3>
+        <p>Capacidade de se mover através das sombras e do vazio entre as dimensões, aparecendo e desaparecendo à vontade.</p>
+        
+        <div class="power-stats">
+          <div class="stat-item">
+            <span>Velocidade</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="90"></div>
+              <span class="power-level">90%</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span>Furtividade</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="95"></div>
+              <span class="power-level">95%</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span>Teletransporte</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="85"></div>
+              <span class="power-level">85%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="power-meter" data-power="shield">
+        <h3>Escudo do Vazio</h3>
+        <p>Barreira impenetrável de energia sombria que pode repelir até os ataques mais poderosos da luz.</p>
+        
+        <div class="power-stats">
+          <div class="stat-item">
+            <span>Força</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="100"></div>
+              <span class="power-level">100%</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span>Duração</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="90"></div>
+              <span class="power-level">90%</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span>Área</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="80"></div>
+              <span class="power-level">80%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="power-meter" data-power="corruption">
+        <h3>Corrupção</h3>
+        <p>Habilidade de drenar energia vital e corromper seres puros, transformando-os em servos das trevas.</p>
+        
+        <div class="power-stats">
+          <div class="stat-item">
+            <span>Alcance</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="85"></div>
+              <span class="power-level">85%</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span>Potência</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="100"></div>
+              <span class="power-level">100%</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span>Duração</span>
+            <div class="power-bar">
+              <div class="power-fill" data-level="95"></div>
+              <span class="power-level">95%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="power-quote" data-aos="fade-up">
+    <blockquote>
+      "A luz que vocês tanto idolatram será engolida pela minha escuridão, e eu me deleitarei com o desespero que restar."
+      <cite>- Noxar, Sombra Implacável</cite>
+    </blockquote>
+  </div>
+</section>
 
 
   <!-- Seção de Galeria Interativa -->
