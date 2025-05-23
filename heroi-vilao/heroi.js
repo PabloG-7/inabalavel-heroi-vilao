@@ -42,8 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, 200);
   
-  
-  
   // Inicializar AOS (Animate On Scroll) com configurações aprimoradas
   AOS.init({
     duration: 800,
@@ -128,7 +126,7 @@ const initCustomCursor = () => {
     
     // Elementos interativos
     const interactiveElements = document.querySelectorAll(
-      'a, button, .nav-toggle, .gallery-slide, .cta-button, .tab-button, .gallery-prev, .gallery-next, .modal-close, .power-option, .slide-button0'
+      'a, button, .nav-toggle, .gallery-slide, .cta-button, .tab-button, .gallery-prev, .gallery-next, .modal-close, .power-option, .slide-button, .control-button'
     );
     
     interactiveElements.forEach(el => {
@@ -230,6 +228,97 @@ const animateStats = () => {
       }
     );
   });
+};
+
+// Controle do Modelo 3D do Personagem
+const initCharacterModel = () => {
+  const model = document.querySelector('.model-3d');
+  const rotateXBtn = document.querySelector('.rotate-x');
+  const rotateYBtn = document.querySelector('.rotate-y');
+  const zoomInBtn = document.querySelector('.zoom-in');
+  const zoomOutBtn = document.querySelector('.zoom-out');
+  
+  if (model) {
+    let rotationX = 0;
+    let rotationY = 0;
+    let scale = 1;
+    
+    const updateModel = () => {
+      model.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale(${scale})`;
+    };
+    
+    rotateXBtn.addEventListener('click', () => {
+      rotationX += 45;
+      updateModel();
+      
+      // Efeito sonoro
+      const audio = new Audio('audio/model-rotate.mp3');
+      audio.volume = 0.3;
+      audio.play();
+    });
+    
+    rotateYBtn.addEventListener('click', () => {
+      rotationY += 45;
+      updateModel();
+      
+      // Efeito sonoro
+      const audio = new Audio('audio/model-rotate.mp3');
+      audio.volume = 0.3;
+      audio.play();
+    });
+    
+    zoomInBtn.addEventListener('click', () => {
+      scale = Math.min(scale + 0.1, 1.5);
+      updateModel();
+      
+      // Efeito sonoro
+      const audio = new Audio('audio/model-zoom.mp3');
+      audio.volume = 0.3;
+      audio.play();
+    });
+    
+    zoomOutBtn.addEventListener('click', () => {
+      scale = Math.max(scale - 0.1, 0.5);
+      updateModel();
+      
+      // Efeito sonoro
+      const audio = new Audio('audio/model-zoom.mp3');
+      audio.volume = 0.3;
+      audio.play();
+    });
+  }
+};
+
+// Efeito de Partículas para o Orb de Poder
+const initPowerOrbParticles = () => {
+  const orbParticles = document.querySelector('.orb-particles');
+  
+  if (orbParticles) {
+    // Criar partículas dinamicamente
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      // Posição aleatória
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 50 + Math.random() * 100;
+      const x = 150 + Math.cos(angle) * distance;
+      const y = 150 + Math.sin(angle) * distance;
+      
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+      
+      // Tamanho e animação aleatórios
+      const size = 2 + Math.random() * 4;
+      const duration = 3 + Math.random() * 4;
+      
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.animationDuration = `${duration}s`;
+      
+      orbParticles.appendChild(particle);
+    }
+  }
 };
 
 // Animar barras de poder com GSAP
@@ -424,6 +513,18 @@ const initTabs = () => {
           repeat: 1,
           ease: "power1.out"
         });
+        
+        // Animar barras de poder
+        const activeMeter = document.querySelector(`.power-meter[data-power="${power}"]`);
+        const bars = activeMeter.querySelectorAll('.power-fill');
+        bars.forEach(bar => {
+          const level = bar.getAttribute('data-level');
+          gsap.to(bar, {
+            width: `${level}%`,
+            duration: 1,
+            ease: "power2.out"
+          });
+        });
       });
     });
   }
@@ -572,10 +673,37 @@ const initCharacterFloat = () => {
   }
 };
 
+// Interação com os Pontos do Mapa na Seção Sobre
+const initMapPoints = () => {
+  const mapPoints = document.querySelectorAll('.map-point');
+  
+  mapPoints.forEach(point => {
+    point.addEventListener('mouseenter', () => {
+      const tooltip = point.querySelector('.point-tooltip');
+      gsap.to(tooltip, {
+        opacity: 1,
+        y: -10,
+        duration: 0.3
+      });
+    });
+    
+    point.addEventListener('mouseleave', () => {
+      const tooltip = point.querySelector('.point-tooltip');
+      gsap.to(tooltip, {
+        opacity: 0,
+        y: 0,
+        duration: 0.3
+      });
+    });
+  });
+};
+
 // Inicializar todas as animações e funcionalidades
 const initAnimations = () => {
   initCustomCursor();
   initTrailerModal();
+  initCharacterModel();
+  initPowerOrbParticles();
   animateStats();
   animatePowerBars();
   initGallery();
@@ -585,6 +713,7 @@ const initAnimations = () => {
   initRevealText();
   initAudioWave();
   initCharacterFloat();
+  initMapPoints();
   
   // Observador de elementos para animação
   const animateElements = document.querySelectorAll('.fade-in-scroll');
@@ -631,6 +760,27 @@ const initAnimations = () => {
       audio.volume = 0.3;
       audio.play();
     });
+  });
+  
+  // Ativar animações das barras de poder quando se tornarem visíveis
+  const powerMetersObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target.classList.contains('active')) {
+        const bars = entry.target.querySelectorAll('.power-fill');
+        bars.forEach(bar => {
+          const level = bar.getAttribute('data-level');
+          gsap.to(bar, {
+            width: `${level}%`,
+            duration: 1,
+            ease: "power2.out"
+          });
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.power-meter').forEach(meter => {
+    powerMetersObserver.observe(meter);
   });
 };
 
