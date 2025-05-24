@@ -2593,4 +2593,58 @@ footer {
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
   }
+   .newsletter-container {
+    width: 100%;
+    padding: 1.2rem 1rem;
+  }
+  
+  .newsletter-text h3 {
+    font-size: clamp(1.2rem, 5vw, 1.5rem); /* Cresce gradualmente */
+    margin: 0 0 0.8rem 0;
+  }
+  
+  .newsletter-text p {
+    font-size: clamp(0.75rem, 3.5vw, 0.85rem); /* Texto responsivo */
+    margin-bottom: 1.2rem;
+    padding: 0;
+  }
+  
+  .newsletter-benefits {
+    margin: 1.2rem 0;
+    gap: 0.6rem;
+  }
+  
+  .benefit-item {
+    font-size: clamp(0.75rem, 3.8vw, 0.9rem); /* Ajuste fino */
+    gap: 0.4rem;
+  }
+  
+  .benefit-item i {
+    font-size: 0.9em; /* Ícones proporcionalmente menores */
+  }
+  
+  .newsletter-form input {
+    padding: 0.7rem 1rem 0.7rem 2.3rem;
+    font-size: clamp(0.8rem, 3.5vw, 0.9rem);
+  }
+  
+  .input-field i {
+    left: 0.8rem;
+    font-size: 0.9em;
+  }
+  
+  .newsletter-form button {
+    padding: 0.7rem;
+    font-size: clamp(0.8rem, 3.8vw, 0.9rem);
+  }
+  
+  .checkbox-container {
+    font-size: clamp(0.65rem, 3.2vw, 0.75rem);
+    max-width: 95%;
+  }
+  
+  .checkmark {
+    min-width: 16px;
+    min-height: 16px;
+  }
 }
