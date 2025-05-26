@@ -14,7 +14,7 @@ Um herói cósmico nascido das estrelas para proteger o universo das forças das
 
 ### Seções Dinâmicas:
 
-- **Origem do Herói** com linha do tempo interativa  
+- **Origem Herói, Origem Vilão** com linha do tempo interativa  
 - **Visualização 3D** dos poderes cósmicos  
 - **Galeria de arte conceitual**  
 - **Trailer holográfico**  
