@@ -5,14 +5,476 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Escolha seu destino - Herói ou Vilão">
   <title>Portal da Escolha</title>
-  <link rel="preload" href="index.css" as="style">
-  <link rel="preload" href="index.js" as="script">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="index.css">
-  <link rel="icon" href="escolhas.png" type="image/x-icon">
+  <style>
+    :root {
+      --hero-primary: #3a86ff;
+      --hero-secondary: #72ddf7;
+      --villain-primary: #d90429;
+      --villain-secondary: #ff5c8a;
+      --dark-bg: #0f0f1b;
+      --darker-bg: #080811;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --text-light: #f8f9fa;
+      --text-muted: #adb5bd;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-light);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+    }
+
+    /* Tela de carregamento */
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      background: var(--darker-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 0.8s ease-out;
+    }
+
+    .loader {
+      width: 60px;
+      height: 60px;
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .loader-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 3px solid transparent;
+      border-top-color: var(--hero-primary);
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite;
+    }
+
+    .loader-inner::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 3px solid transparent;
+      border-top-color: var(--villain-primary);
+      border-radius: 50%;
+      animation: spin 2s linear infinite reverse;
+    }
+
+    .loading-text {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-light);
+      animation: pulse 2s infinite;
+    }
+
+    .progress-container {
+      width: min(80%, 250px);
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--hero-primary), var(--villain-primary));
+      transition: width 0.3s ease-out;
+    }
+
+    /* Efeito de fundo */
+    .background-effect {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      filter: blur(40px);
+    }
+
+    .bg-circle-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--hero-primary);
+      top: 10%;
+      left: 10%;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    .bg-circle-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--villain-primary);
+      bottom: 5%;
+      right: 10%;
+      animation: float 18s infinite ease-in-out reverse;
+    }
+
+    /* Container Principal */
+    .portal-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+
+    .portal-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      z-index: 2;
+      width: 100%;
+      max-width: 800px;
+      padding: 0 1rem;
+    }
+
+    .portal-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 8vw, 4rem);
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+
+    .title-accent {
+      background: linear-gradient(90deg, var(--hero-primary), var(--villain-primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .portal-subtitle {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* Grid de Cards */
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      z-index: 2;
+    }
+
+    .choice-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-header {
+      padding: 1.5rem 1.5rem 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .hero-choice .card-icon {
+      background: rgba(58, 134, 255, 0.2);
+      color: var(--hero-primary);
+    }
+
+    .villain-choice .card-icon {
+      background: rgba(217, 4, 41, 0.2);
+      color: var(--villain-primary);
+    }
+
+    .choice-card h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .character-image {
+      width: 100%;
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .hero-image {
+      background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), 
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%233a86ff" opacity="0.2"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="%233a86ff" stroke-width="2"/></svg>');
+    }
+
+    .villain-image {
+      background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), 
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23d90429" opacity="0.2"/><polygon points="50,20 20,80 80,80" fill="none" stroke="%23d90429" stroke-width="2"/></svg>');
+    }
+
+    .card-content {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .choice-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .choice-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: var(--transition);
+      font-size: 0.85rem;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-choice .choice-btn {
+      background: var(--hero-primary);
+      color: white;
+    }
+
+    .villain-choice .choice-btn {
+      background: var(--villain-primary);
+      color: white;
+    }
+
+    .choice-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: var(--transition);
+    }
+
+    /* Botão de escolha aleatória */
+    .random-choice-container {
+      margin-top: 3rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .random-choice-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      background: linear-gradient(45deg, var(--hero-primary), var(--villain-primary));
+      color: var(--text-light);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .random-choice-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .random-choice-btn:hover i {
+      transform: rotate(180deg);
+    }
+
+    .random-choice-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: var(--transition);
+    }
+
+    .random-choice-btn:hover::before {
+      left: 100%;
+    }
+
+    /* Footer */
+    .portal-footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      z-index: 2;
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    /* Efeitos Hover */
+    .choice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .choice-btn:hover {
+      transform: translateX(5px);
+    }
+
+    .choice-btn:hover::before {
+      left: 100%;
+    }
+
+    .choice-btn:hover i {
+      transform: translateX(5px);
+    }
+
+    /* Animações */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .choice-grid {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+      }
+      
+      .choice-card {
+        min-height: 350px;
+      }
+      
+      .character-image {
+        height: 140px;
+      }
+      
+      .random-choice-btn {
+        padding: 0.9rem 1.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .portal-container {
+        padding: 1.5rem 1rem;
+      }
+      
+      .portal-title {
+        font-size: 1.8rem;
+      }
+      
+      .choice-card {
+        min-height: 320px;
+      }
+      
+      .character-image {
+        height: 120px;
+      }
+      
+      .card-content {
+        padding: 1.2rem;
+      }
+      
+      .random-choice-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Acessibilidade */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+      
+      .choice-card:hover {
+        transform: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Tela de carregamento -->
@@ -27,54 +489,53 @@
   </div>
 
   <!-- Efeito de fundo -->
-  <div class="portal-background">
-    <div class="energy-wave hero-wave"></div>
-    <div class="energy-wave villain-wave"></div>
-    <div class="nexus-point"></div>
+  <div class="background-effect">
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
   </div>
 
   <!-- Conteúdo principal -->
   <main class="portal-container">
     <div class="portal-header">
-      <h1 class="portal-title">ESCOLHA SEU DESTINO</h1>
-      <p class="portal-subtitle">O equilíbrio do universo depende de sua escolha</p>
+      <h1 class="portal-title">ESCOLHA SEU <span class="title-accent">DESTINO</span></h1>
+      <p class="portal-subtitle">Uma decisão que definirá seu caminho para sempre. O equilíbrio depende de sua escolha.</p>
     </div>
 
     <div class="choice-grid">
       <!-- Card Herói -->
       <div class="choice-card hero-choice">
-        <div class="character-image hero-image"></div>
-        <div class="card-overlay"></div>
-        <div class="card-content">
+        <div class="card-header">
           <div class="card-icon">
-            <i class="fas fa-sun"></i>
+            <i class="fas fa-shield-alt"></i>
           </div>
-          <h2>GUARDIÃO CELESTIAL</h2>
-          <p>Defensor da luz e guardião do equilíbrio cósmico.</p>
+          <h2>GUARDIÃO DA LUZ</h2>
+        </div>
+        <div class="character-image hero-image"></div>
+        <div class="card-content">
+          <p>Aqueles que escolhem o caminho da luz se tornam defensores da justiça e protetores dos inocentes. Sua coragem ilumina até as trevas mais profundas.</p>
           <a href="heroi-vilao/heroi.html" class="choice-btn">
-            <span>Abraçar Luz</span>
+            <span>Escolher a Luz</span>
             <i class="fas fa-arrow-right"></i>
           </a>
         </div>
-        <div class="card-glows"></div>
       </div>
 
       <!-- Card Vilão -->
       <div class="choice-card villain-choice">
-        <div class="character-image villain-image"></div>
-        <div class="card-overlay"></div>
-        <div class="card-content">
+        <div class="card-header">
           <div class="card-icon">
-            <i class="fas fa-moon"></i>
+            <i class="fas fa-skull"></i>
           </div>
-          <h2>SOMBRA IMPLACÁVEL</h2>
-          <p>Liberte o poder primordial do caos.</p>
+          <h2>SENHOR DAS TREVAS</h2>
+        </div>
+        <div class="character-image villain-image"></div>
+        <div class="card-content">
+          <p>O poder das trevas oferece liberdade das restrições da moralidade. Aqueles que abraçam a escuridão descobrem força inimaginável.</p>
           <a href="heroi-vilao/vilao.html" class="choice-btn">
-            <span>Abraçar Trevas</span>
+            <span>Abraçar as Trevas</span>
             <i class="fas fa-arrow-right"></i>
           </a>
         </div>
-        <div class="card-glows"></div>
       </div>
     </div>
 
@@ -87,10 +548,89 @@
     </div>
 
     <div class="portal-footer">
-      <p>Esta decisão moldará seu destino para sempre</p>
+      <p>Esta decisão moldará seu destino para sempre. Escolha com sabedoria.</p>
     </div>
   </main>
 
-  <script src="index.js" defer></script>
+  <script>
+    // Tela de carregamento otimizada
+    document.addEventListener('DOMContentLoaded', function() {
+      const loadingScreen = document.querySelector('.loading-screen');
+      const progressBar = document.querySelector('.progress-bar');
+      
+      if (!loadingScreen || !progressBar) return;
+      
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+        }
+        progressBar.style.width = `${progress}%`;
+        
+        if (progress >= 100) {
+          setTimeout(() => {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }, 300);
+        }
+      }, 300);
+    });
+
+    // Função para escolha aleatória
+    document.addEventListener('DOMContentLoaded', function() {
+      const randomBtn = document.getElementById('randomChoiceBtn');
+      
+      if (!randomBtn) return;
+      
+      randomBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Efeito visual
+        randomBtn.disabled = true;
+        const originalText = randomBtn.querySelector('span').textContent;
+        randomBtn.querySelector('span').textContent = 'Decidindo destino...';
+        randomBtn.querySelector('i').classList.add('fa-spin');
+        
+        // Cria efeito de piscar nos cards
+        const cards = document.querySelectorAll('.choice-card');
+        let flashes = 0;
+        const maxFlashes = 5;
+        const flashInterval = 300;
+        
+        const flashCards = setInterval(() => {
+          cards.forEach(card => {
+            if (flashes % 2 === 0) {
+              card.style.transform = 'translateY(-5px) scale(1.02)';
+            } else {
+              card.style.transform = 'translateY(-5px)';
+            }
+          });
+          
+          flashes++;
+          if (flashes >= maxFlashes * 2) {
+            clearInterval(flashCards);
+            cards.forEach(card => card.style.transform = '');
+            makeRandomChoice();
+          }
+        }, flashInterval);
+      });
+      
+      function makeRandomChoice() {
+        const choices = ['hero', 'villain'];
+        const randomChoice = choices[Math.floor(Math.random() * choices.length)];
+        
+        // Redirecionar
+        setTimeout(() => {
+          window.location.href = randomChoice === 'hero' 
+            ? 'heroi-vilao/heroi.html'
+            : 'heroi-vilao/vilao.html';
+        }, 800);
+      }
+    });
+  </script>
 </body>
 </html>
