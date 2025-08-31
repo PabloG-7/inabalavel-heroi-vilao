@@ -1,6 +1,6 @@
 ## 💥 INABALÁVEL - Guardião Celestial vs Sombra Implacável
 
- <img src="https://raw.githubusercontent.com/PabloG-7/inabalavel-heroi-vilao/refs/heads/main/inabalavel-apresentacao.png">
+ <img src="https://raw.githubusercontent.com/PabloG-7/inabalavel-heroi-vilao/refs/heads/main/inabalavel-linkedin.png">
 
 Um herói cósmico nascido das estrelas para proteger o universo das forças das trevas. Este projeto apresenta um website imersivo sobre o Guardião Celestial e a Sombra Implacável, parte do universo **INABALÁVEL**.
 
